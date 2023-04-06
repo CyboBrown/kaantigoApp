@@ -1,6 +1,6 @@
 # Kaantigo - Learn Cebuano
 
-“Kaantigo – Learn Cebuano” is a language learning app specifically catered towards learning Cebuano. This app have the basic important functionalities you need to be able to learn Cebuano. Kaantigo™ has a simple user-friendly interface and offers a range of features that make language learning engaging and effective.
+“Kaantigo – Learn Cebuano” is a language learning app specifically catered towards learning Cebuano. This app has the basic functionalities you need to be able to learn Cebuano. Kaantigo™ has a simple, user-friendly interface and offers a range of features that make language learning engaging and effective.
 
 ## Functionality
 
