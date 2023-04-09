@@ -6,6 +6,7 @@ import android.os.Bundle;
 
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
 
 import android.transition.AutoTransition;
 import android.transition.ChangeClipBounds;
@@ -19,6 +20,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+
+import com.google.android.material.chip.Chip;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -59,6 +62,7 @@ public class LessonTabFragment extends Fragment implements View.OnClickListener 
     }
 
     CardView card_lesson1;
+    Chip chip_personal_pronouns;
     LinearLayout cardop_lesson1;
     ImageView expand_card;
 
@@ -78,7 +82,9 @@ public class LessonTabFragment extends Fragment implements View.OnClickListener 
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_lesson_tab, container, false);
         card_lesson1 = view.findViewById(R.id.card_lesson1);
+        chip_personal_pronouns = view.findViewById(R.id.chip_personal_pronouns);
         card_lesson1.setOnClickListener(this);
+        chip_personal_pronouns.setOnClickListener(this);
         card_lesson1.getLayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
         return view;
     }
@@ -90,7 +96,6 @@ public class LessonTabFragment extends Fragment implements View.OnClickListener 
             case R.id.card_lesson1:
                 cardop_lesson1 = view.findViewById(R.id.cardop_lesson1);
                 expand_card = view.findViewById(R.id.expand_card);
-//                TransitionManager.beginDelayedTransition(card_lesson1, new AutoTransition());
                 if (cardop_lesson1.getVisibility() == View.GONE) {
                     TransitionManager.beginDelayedTransition(card_lesson1, new AutoTransition());
                     cardop_lesson1.setVisibility(View.VISIBLE);
@@ -100,6 +105,11 @@ public class LessonTabFragment extends Fragment implements View.OnClickListener 
                     cardop_lesson1.setVisibility(View.GONE);
                     expand_card.setImageIcon(Icon.createWithResource(getActivity(),R.drawable.ic_expand_more));
                 }
+                break;
+            case R.id.chip_personal_pronouns:
+                getParentFragmentManager().beginTransaction().replace(R.id.container, new PersonalPronounTableFragment()).commit();
+                System.out.println("Table");
+                break;
         }
     }
 }

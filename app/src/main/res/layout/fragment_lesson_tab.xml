@@ -116,6 +116,7 @@
                                 style="@style/Widget.MaterialComponents.Button.TextButton"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
+                                android:enabled="false"
                                 android:text="Personal Pronouns" />
 
                             <com.google.android.material.divider.MaterialDivider
@@ -128,6 +129,7 @@
                                 style="@style/Widget.MaterialComponents.Button.TextButton"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
+                                android:enabled="false"
                                 android:text="Demonstrative Pronouns" />
 
                             <com.google.android.material.divider.MaterialDivider
@@ -152,7 +154,7 @@
                                         app:singleLine="true">
 
                                         <com.google.android.material.chip.Chip
-                                            android:id="@+id/chip3"
+                                            android:id="@+id/chip_personal_pronouns"
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:text="Personal Pronouns"
@@ -161,9 +163,10 @@
                                             app:textStartPadding="6dp" />
 
                                         <com.google.android.material.chip.Chip
-                                            android:id="@+id/chip4"
+                                            android:id="@+id/chip_demonstrative_pronouns"
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
+                                            android:enabled="false"
                                             android:text="Demonstrative Pronouns"
                                             app:chipIcon="@drawable/ic_table"
                                             app:chipStartPadding="6dp"
