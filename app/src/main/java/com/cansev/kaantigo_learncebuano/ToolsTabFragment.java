@@ -2,21 +2,14 @@ package com.cansev.kaantigo_learncebuano;
 
 import android.animation.LayoutTransition;
 import android.content.Intent;
-import android.graphics.drawable.Icon;
 import android.os.Bundle;
 
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
-import android.transition.AutoTransition;
-import android.transition.ChangeClipBounds;
-import android.transition.TransitionManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -57,15 +50,7 @@ public class ToolsTabFragment extends Fragment implements View.OnClickListener {
         return fragment;
     }
 
-    CardView card_lesson1;
-
-    LinearLayout cardop_lesson1;
-
-    ImageView expand_card;
-
-    Button btn1;
-    Button btn2;
-    Button btn3;
+    CardView card_flashcards;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -83,19 +68,9 @@ public class ToolsTabFragment extends Fragment implements View.OnClickListener {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_tools_tab, container, false);
 
-        btn1 = view.findViewById(R.id.btn1);
-
-        btn1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), FlashcardsCaseMarkers.class);
-                startActivity(intent);
-            }
-        });
-
-        card_lesson1 = view.findViewById(R.id.card_lesson1);
-        card_lesson1.setOnClickListener(this);
-        card_lesson1.getLayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
+        card_flashcards = view.findViewById(R.id.card_flashcards);
+        card_flashcards.setOnClickListener(this);
+        card_flashcards.getLayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
         return view;
     }
 
@@ -103,20 +78,12 @@ public class ToolsTabFragment extends Fragment implements View.OnClickListener {
     public void onClick(View view) {
         System.out.println("Clicked");
         switch (view.getId()) {
-            case R.id.card_lesson1:
-                cardop_lesson1 = view.findViewById(R.id.cardop_lesson1);
-                expand_card = view.findViewById(R.id.expand_card);
-                btn1 = btn1.findViewById(R.id.btn1);
-//                TransitionManager.beginDelayedTransition(card_lesson1, new AutoTransition());
-                if (cardop_lesson1.getVisibility() == View.GONE) {
-                    TransitionManager.beginDelayedTransition(card_lesson1, new AutoTransition());
-                    cardop_lesson1.setVisibility(View.VISIBLE);
-                    expand_card.setImageIcon(Icon.createWithResource(getActivity(), R.drawable.ic_expand_less));
-                } else {
-                    TransitionManager.beginDelayedTransition(card_lesson1, new ChangeClipBounds());
-                    cardop_lesson1.setVisibility(View.GONE);
-                    expand_card.setImageIcon(Icon.createWithResource(getActivity(), R.drawable.ic_expand_more));
-                }
+            case R.id.card_flashcards:
+                Intent intent = new Intent(getActivity(), FlashcardsActivity.class);
+                startActivity(intent);
+//            case R.id.card_sentence_constructor:
+//                Intent intent = new Intent(getActivity(), SentenceConstructorActivity.class);
+//                startActivity(intent);
         }
     }
 }

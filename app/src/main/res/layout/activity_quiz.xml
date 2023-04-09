@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".QuizCaseMarkers"
+    tools:context=".QuizActivity"
     android:orientation="vertical">
 
     <RelativeLayout
@@ -16,7 +16,7 @@
             android:layout_height="20dp"
             android:layout_centerVertical="true"
             android:layout_marginStart="15dp"
-            android:src="@drawable/back_btn"/>
+            android:src="@drawable/ic_back"/>
 
         <TextView
             android:id="@+id/topicName"
@@ -41,7 +41,7 @@
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:layout_marginStart="15dp"
-                android:src="@drawable/timer_icon"/>
+                android:src="@drawable/ic_timer"/>
 
             <TextView
                 android:id="@+id/timer"

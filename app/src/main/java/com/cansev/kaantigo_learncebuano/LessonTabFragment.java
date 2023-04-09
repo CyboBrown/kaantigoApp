@@ -6,14 +6,9 @@ import android.os.Bundle;
 
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentActivity;
 
 import android.transition.AutoTransition;
 import android.transition.ChangeClipBounds;
-import android.transition.ChangeTransform;
-import android.transition.Explode;
-import android.transition.Fade;
-import android.transition.Slide;
 import android.transition.TransitionManager;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -63,8 +58,6 @@ public class LessonTabFragment extends Fragment implements View.OnClickListener 
 
     CardView card_lesson1;
     Chip chip_personal_pronouns;
-    LinearLayout cardop_lesson1;
-    ImageView expand_card;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -81,7 +74,7 @@ public class LessonTabFragment extends Fragment implements View.OnClickListener 
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_lesson_tab, container, false);
-        card_lesson1 = view.findViewById(R.id.card_lesson1);
+        card_lesson1 = view.findViewById(R.id.card_flashcards);
         chip_personal_pronouns = view.findViewById(R.id.chip_personal_pronouns);
         card_lesson1.setOnClickListener(this);
         chip_personal_pronouns.setOnClickListener(this);
@@ -93,9 +86,9 @@ public class LessonTabFragment extends Fragment implements View.OnClickListener 
     public void onClick(View view) {
         System.out.println("Clicked");
         switch (view.getId()) {
-            case R.id.card_lesson1:
-                cardop_lesson1 = view.findViewById(R.id.cardop_lesson1);
-                expand_card = view.findViewById(R.id.expand_card);
+            case R.id.card_flashcards:
+                LinearLayout cardop_lesson1 = view.findViewById(R.id.cardop_lesson1);
+                ImageView expand_card = view.findViewById(R.id.expand_card);
                 if (cardop_lesson1.getVisibility() == View.GONE) {
                     TransitionManager.beginDelayedTransition(card_lesson1, new AutoTransition());
                     cardop_lesson1.setVisibility(View.VISIBLE);

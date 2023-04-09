@@ -88,12 +88,12 @@ public class QuizTabFragment extends Fragment implements View.OnClickListener  {
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), QuizCaseMarkers.class);
+                Intent intent = new Intent(getActivity(), QuizActivity.class);
                 startActivity(intent);
             }
         });
 
-        card_lesson1 = view.findViewById(R.id.card_lesson1);
+        card_lesson1 = view.findViewById(R.id.card_flashcards);
         card_lesson1.setOnClickListener(this);
         card_lesson1.getLayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
         return view;
@@ -103,7 +103,7 @@ public class QuizTabFragment extends Fragment implements View.OnClickListener  {
     public void onClick(View view) {
         System.out.println("Clicked");
         switch (view.getId()) {
-            case R.id.card_lesson1:
+            case R.id.card_flashcards:
                 cardop_lesson1 = view.findViewById(R.id.cardop_lesson1);
                 expand_card = view.findViewById(R.id.expand_card);
                 btn1 = btn1.findViewById(R.id.btn1);

@@ -20,22 +20,31 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <LinearLayout
+                android:id="@+id/layout_lesson_tab"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:layout_marginLeft="@dimen/default_margin_half"
+                android:layout_marginTop="@dimen/default_margin_half"
+                android:layout_marginRight="@dimen/default_margin_half"
+                android:layout_marginBottom="@dimen/default_margin_half"
+                android:orientation="vertical"
+                android:animateLayoutChanges="true">
 
                 <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/card_lesson1"
+                    android:id="@+id/card_flashcards"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="20dp"
+                    android:layout_marginLeft="@dimen/default_margin_half"
+                    android:layout_marginTop="@dimen/default_margin_half"
+                    android:layout_marginRight="@dimen/default_margin_half"
+                    android:layout_marginBottom="@dimen/default_margin_half"
+                    android:animateLayoutChanges="true"
                     android:checkable="true"
                     android:clickable="true"
                     android:focusable="true"
-                    android:animateLayoutChanges="true"
-                    app:cardCornerRadius="24dp"
-                    app:cardElevation="8dp"
-                    app:contentPadding="16dp">
+                    app:cardCornerRadius="@dimen/default_card_corner_radius"
+                    app:cardElevation="@dimen/default_card_elevation"
+                    app:contentPadding="@dimen/default_padding">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -46,7 +55,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="horizontal"
-                            android:paddingBottom="4dp">
+                            android:paddingBottom="@dimen/default_spacing_minor">
 
                             <LinearLayout
                                 android:layout_width="0dp"
@@ -63,7 +72,7 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:layout_marginTop="4dp"
+                                    android:layout_marginTop="@dimen/default_spacing_minor"
                                     android:text="Secondary Text"
                                     android:textAppearance="?attr/textAppearanceBody2"
                                     android:textColor="?android:attr/textColorSecondary" />
@@ -150,7 +159,7 @@
                                     <com.google.android.material.chip.ChipGroup
                                         android:layout_width="match_parent"
                                         android:layout_height="match_parent"
-                                        android:paddingTop="4dp"
+                                        android:paddingTop="@dimen/default_spacing_minor"
                                         app:singleLine="true">
 
                                         <com.google.android.material.chip.Chip
@@ -159,8 +168,8 @@
                                             android:layout_height="wrap_content"
                                             android:text="Personal Pronouns"
                                             app:chipIcon="@drawable/ic_table"
-                                            app:chipStartPadding="6dp"
-                                            app:textStartPadding="6dp" />
+                                            app:chipStartPadding="@dimen/default_chip_padding"
+                                            app:textStartPadding="@dimen/default_chip_padding" />
 
                                         <com.google.android.material.chip.Chip
                                             android:id="@+id/chip_demonstrative_pronouns"
@@ -169,8 +178,8 @@
                                             android:enabled="false"
                                             android:text="Demonstrative Pronouns"
                                             app:chipIcon="@drawable/ic_table"
-                                            app:chipStartPadding="6dp"
-                                            app:textStartPadding="6dp" />
+                                            app:chipStartPadding="@dimen/default_chip_padding"
+                                            app:textStartPadding="@dimen/default_chip_padding" />
 
                                         <!--                                    app:chipIconTint="@color/icon_tint"-->
 
