@@ -17,6 +17,9 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
+
+import com.google.android.material.card.MaterialCardView;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -96,6 +99,8 @@ public class QuizTabFragment extends Fragment implements View.OnClickListener  {
         card_lesson1 = view.findViewById(R.id.card_flashcards);
         card_lesson1.setOnClickListener(this);
         card_lesson1.getLayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
+        ProgressBar pb_quiz1 = view.findViewById(R.id.pb_quiz1);
+        pb_quiz1.setProgress(25, true);
         return view;
     }
 

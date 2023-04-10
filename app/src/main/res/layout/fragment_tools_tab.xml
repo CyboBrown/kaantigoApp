@@ -11,38 +11,65 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <ScrollView
+        <RelativeLayout
+            android:id="@+id/relativeLayout2"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_height="@dimen/default_title_bar_height"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="Tools"
+                android:textAppearance="?attr/textAppearanceHeadline6"
+                android:textSize="@dimen/default_title_bar_font_size"/>
+
+        </RelativeLayout>
+
+        <View
+            android:id="@+id/divider"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="?android:attr/listDivider"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/relativeLayout2" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/divider">
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginBottom="8dp"
+                android:layout_marginLeft="@dimen/default_margin_half"
+                android:layout_marginTop="@dimen/default_margin_half"
+                android:layout_marginRight="@dimen/default_margin_half"
+                android:layout_marginBottom="@dimen/default_margin_half"
                 android:orientation="vertical">
 
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/card_flashcards"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginBottom="10dp"
+                    android:layout_marginLeft="@dimen/default_margin_half"
+                    android:layout_marginTop="@dimen/default_margin_half"
+                    android:layout_marginRight="@dimen/default_margin_half"
+                    android:layout_marginBottom="@dimen/default_margin_half"
                     android:animateLayoutChanges="true"
                     android:checkable="true"
                     android:clickable="true"
                     android:focusable="true"
-                    app:cardCornerRadius="24dp"
-                    app:cardElevation="8dp"
-                    app:contentPadding="16dp">
+                    app:cardCornerRadius="@dimen/default_card_corner_radius"
+                    app:cardElevation="@dimen/default_card_elevation"
+                    app:contentPadding="@dimen/default_padding">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -53,13 +80,13 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="horizontal"
-                            android:paddingBottom="4dp">
+                            android:paddingBottom="@dimen/default_spacing_minor">
 
                             <ImageView
                                 android:id="@+id/thumbnail_flashcards"
                                 android:layout_width="0dp"
                                 android:layout_height="match_parent"
-                                android:layout_marginRight="10dp"
+                                android:layout_marginRight="@dimen/default_margin_half"
                                 android:layout_weight="1"
                                 android:src="@drawable/ic_flashcards" />
 
@@ -78,7 +105,7 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:layout_marginTop="4dp"
+                                    android:layout_marginTop="@dimen/default_spacing_minor"
                                     android:text="Train your vocabulary with flashcards"
                                     android:textAppearance="?attr/textAppearanceBody2"
                                     android:textColor="?android:attr/textColorSecondary" />
@@ -102,17 +129,17 @@
                     android:id="@+id/card_sentence_constructor"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginBottom="10dp"
+                    android:layout_marginLeft="@dimen/default_margin_half"
+                    android:layout_marginTop="@dimen/default_margin_half"
+                    android:layout_marginRight="@dimen/default_margin_half"
+                    android:layout_marginBottom="@dimen/default_margin_half"
                     android:animateLayoutChanges="true"
                     android:checkable="true"
                     android:clickable="true"
                     android:focusable="true"
-                    app:cardCornerRadius="24dp"
-                    app:cardElevation="8dp"
-                    app:contentPadding="16dp">
+                    app:cardCornerRadius="@dimen/default_card_corner_radius"
+                    app:cardElevation="@dimen/default_card_elevation"
+                    app:contentPadding="@dimen/default_padding">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -123,13 +150,13 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="horizontal"
-                            android:paddingBottom="4dp">
+                            android:paddingBottom="@dimen/default_spacing_minor">
 
                             <ImageView
                                 android:id="@+id/thumbnail_sentence_constructor"
                                 android:layout_width="0dp"
                                 android:layout_height="match_parent"
-                                android:layout_marginRight="10dp"
+                                android:layout_marginRight="@dimen/default_margin_half"
                                 android:layout_weight="1"
                                 android:src="@drawable/ic_construct" />
 
@@ -148,18 +175,18 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:layout_marginTop="4dp"
+                                    android:layout_marginTop="@dimen/default_spacing_minor"
                                     android:text="Learn to build and analyze sentences"
                                     android:textAppearance="?attr/textAppearanceBody2"
                                     android:textColor="?android:attr/textColorSecondary" />
 
-<!--                                                    <TextView-->
-<!--                                                        android:layout_width="wrap_content"-->
-<!--                                                        android:layout_height="wrap_content"-->
-<!--                                                        android:layout_marginTop="16dp"-->
-<!--                                                        android:text="Supporting Text"-->
-<!--                                                        android:textAppearance="?attr/textAppearanceBody2"-->
-<!--                                                        android:textColor="?android:attr/textColorSecondary" />-->
+                                <!--                                                    <TextView-->
+                                <!--                                                        android:layout_width="wrap_content"-->
+                                <!--                                                        android:layout_height="wrap_content"-->
+                                <!--                                                        android:layout_marginTop="16dp"-->
+                                <!--                                                        android:text="Supporting Text"-->
+                                <!--                                                        android:textAppearance="?attr/textAppearanceBody2"-->
+                                <!--                                                        android:textColor="?android:attr/textColorSecondary" />-->
                             </LinearLayout>
 
                         </LinearLayout>

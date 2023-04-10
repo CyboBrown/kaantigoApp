@@ -15,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 
 import com.google.android.material.chip.Chip;
 
@@ -79,6 +80,8 @@ public class LessonTabFragment extends Fragment implements View.OnClickListener 
         card_lesson1.setOnClickListener(this);
         chip_personal_pronouns.setOnClickListener(this);
         card_lesson1.getLayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
+        ProgressBar pb_lesson1 = view.findViewById(R.id.pb_lesson1);
+        pb_lesson1.setProgress(50, true);
         return view;
     }
 
