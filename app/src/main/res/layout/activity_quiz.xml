@@ -9,24 +9,21 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="60dp">
+        android:layout_height="@dimen/default_title_bar_height">
 
         <ImageView
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:layout_centerVertical="true"
-            android:layout_marginStart="15dp"
-            android:src="@drawable/ic_back"/>
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/default_title_bar_icon_padding"
+            android:src="@drawable/ic_back" />
 
         <TextView
-            android:id="@+id/topicName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:text="Case Markers"
-            android:textColor="@color/black"
-            android:textSize="18sp"
-            android:textStyle="bold"/>
+            android:text="Quiz"
+            android:textAppearance="?attr/textAppearanceHeadline6"
+            android:textSize="@dimen/default_title_bar_font_size" />
         
         <LinearLayout
             android:layout_width="wrap_content"
@@ -46,7 +43,7 @@
             <TextView
                 android:id="@+id/timer"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_marginStart="5dp"
                 android:text="00:59"
                 android:textColor="@color/black"/>
@@ -54,91 +51,181 @@
             
     </RelativeLayout>
 
-    <TextView
-        android:id="@+id/questions"
-        android:layout_width="wrap_content"
-        android:layout_height="30dp"
-        android:layout_gravity="center"
-        android:layout_marginTop="40dp"
-        android:background="@drawable/round_back_white10"
-        android:elevation="1dp"
-        android:gravity="center"
-        android:paddingStart="15dp"
-        android:paddingEnd="15dp"
-        android:text="1/10"
-        android:textColor="#1F6BB8"/>
-    
-    <TextView
-        android:id="@+id/question"
+
+    <ProgressBar
+        android:id="@+id/pb_quiz_active"
+        style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginTop="-20dp"
-        android:background="@drawable/round_back_dark_green10"
+        android:progress="10"
+        android:progressTint="?attr/colorPrimary"
+        android:minHeight="0dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:gravity="center"
-        android:minHeight="100dp"
-        android:padding="20dp"
-        android:textColor="@color/white"
-        android:textSize="16sp"
-        android:text="Question 1"/>
+        android:orientation="vertical"
+        android:paddingBottom="64dp">
 
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/card_question"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/default_margin"
+            android:layout_marginTop="@dimen/default_margin"
+            android:layout_marginRight="@dimen/default_margin"
+            android:layout_marginBottom="@dimen/default_margin"
+            android:animateLayoutChanges="true"
+            android:checkable="true"
+            android:clickable="false"
+            android:focusable="true"
+            app:cardCornerRadius="@dimen/default_card_corner_radius_third"
+            app:cardElevation="4dp"
+            app:contentPadding="@dimen/default_padding">
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/option1"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
-        android:text="Option 1"
-        android:background="@drawable/round_back_white_stroke2"
-        android:textAllCaps="false"
-        android:layout_marginEnd="20dp"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="@dimen/default_padding_half">
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/option2"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
-        android:text="Option 2"
-        android:background="@drawable/round_back_white_stroke2"
-        android:textAllCaps="false"
-        android:layout_marginEnd="20dp"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/option3"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
-        android:text="Option 3"
-        android:background="@drawable/round_back_white_stroke2"
-        android:textAllCaps="false"
-        android:layout_marginEnd="20dp"/>
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="4"
+                        android:orientation="vertical">
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/option4"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
-        android:text="Option 4"
-        android:background="@drawable/round_back_white_stroke2"
-        android:textAllCaps="false"
-        android:layout_marginEnd="20dp"/>
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="@dimen/default_spacing_minor"
+                            android:text="How do you say the following?"
+                            android:textAlignment="viewStart"
+                            android:textAppearance="?attr/textAppearanceBody2"
+                            android:textColor="?android:attr/textColorSecondary" />
 
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="I bought a new house."
+                            android:textAlignment="viewStart"
+                            android:textAllCaps="false"
+                            android:textAppearance="?attr/textAppearanceHeadline6"
+                            android:textSize="24sp"
+                            android:textStyle="bold|italic" />
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/nextBtn"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="50dp"
-        android:text="Next"
-        android:textColor="@color/white"
-        android:background="@drawable/round_back_dark_green10"
-        android:textAllCaps="false"
-        android:layout_marginEnd="20dp" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/card_answer1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/default_margin"
+            android:layout_marginTop="@dimen/default_margin_half"
+            android:layout_marginRight="@dimen/default_margin"
+            android:animateLayoutChanges="true"
+            android:checkable="true"
+            android:clickable="true"
+            android:focusable="true"
+            app:cardCornerRadius="@dimen/default_card_corner_radius_half"
+            app:cardElevation="@dimen/default_card_elevation"
+            app:contentPadding="@dimen/default_padding_half">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Mipalit ko sa bag-o nga balay."
+                android:textAlignment="center"
+                android:textAppearance="?attr/textAppearanceHeadline6" />
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/card_answer2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/default_margin"
+            android:layout_marginTop="@dimen/default_margin_half"
+            android:layout_marginRight="@dimen/default_margin"
+            android:animateLayoutChanges="true"
+            android:checkable="true"
+            android:clickable="true"
+            android:focusable="true"
+            app:cardCornerRadius="@dimen/default_card_corner_radius_half"
+            app:cardElevation="@dimen/default_card_elevation"
+            app:contentPadding="@dimen/default_padding_half">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Mopalit ko og bag-o nga balay."
+                android:textAlignment="center"
+                android:textAppearance="?attr/textAppearanceHeadline6" />
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/card_answer3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/default_margin"
+            android:layout_marginTop="@dimen/default_margin_half"
+            android:layout_marginRight="@dimen/default_margin"
+            android:animateLayoutChanges="true"
+            android:checkable="true"
+            android:clickable="true"
+            android:focusable="true"
+            app:cardCornerRadius="@dimen/default_card_corner_radius_half"
+            app:cardElevation="@dimen/default_card_elevation"
+            app:contentPadding="@dimen/default_padding_half">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Mopalit ko sa bag-o nga balay."
+                android:textAlignment="center"
+                android:textAppearance="?attr/textAppearanceHeadline6" />
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/card_answer4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/default_margin"
+            android:layout_marginTop="@dimen/default_margin_half"
+            android:layout_marginRight="@dimen/default_margin"
+            android:layout_marginBottom="@dimen/default_margin"
+            android:animateLayoutChanges="true"
+            android:checkable="true"
+            android:clickable="true"
+            android:focusable="true"
+            app:cardCornerRadius="@dimen/default_card_corner_radius_half"
+            app:cardElevation="@dimen/default_card_elevation"
+            app:contentPadding="@dimen/default_padding_half">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Mipalit ko og bag-o nga balay."
+                android:textAlignment="center"
+                android:textAppearance="?attr/textAppearanceHeadline6" />
+
+        </com.google.android.material.card.MaterialCardView>
+
+    </LinearLayout>
+
 
 </LinearLayout>
