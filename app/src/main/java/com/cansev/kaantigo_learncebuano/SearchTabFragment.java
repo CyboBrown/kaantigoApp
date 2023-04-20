@@ -1,5 +1,6 @@
 package com.cansev.kaantigo_learncebuano;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -7,13 +8,21 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
+import android.widget.Button;
+
+import com.google.android.material.textfield.TextInputLayout;
+
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link SearchTabFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class SearchTabFragment extends Fragment {
+public class SearchTabFragment extends Fragment implements View.OnClickListener {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -46,6 +55,8 @@ public class SearchTabFragment extends Fragment {
         return fragment;
     }
 
+    TextInputLayout searchField;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,12 +64,39 @@ public class SearchTabFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+        PreCreateDB.copyDB(this.getContext());
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_search_tab, container, false);
+        View view = inflater.inflate(R.layout.fragment_search_tab, container, false);
+//        searchField = view.findViewById(R.id.field_search);
+//        List<String> items = Arrays.asList("Material", "Design", "Components", "Android");
+//        ArrayAdapter<String> adapter = new ArrayAdapter<>(requireContext(), R.layout.list_item, items);
+//        if (searchField.getEditText() instanceof AutoCompleteTextView) {
+//            ((AutoCompleteTextView) searchField.getEditText()).setAdapter(adapter);
+//        }
+        Button buttonA = view.findViewById(R.id.btnA);
+        buttonA.setOnClickListener(this);
+        Button buttonB = view.findViewById(R.id.btnB);
+        buttonB.setOnClickListener(this);
+        Button buttonC = view.findViewById(R.id.btnC);
+        buttonC.setOnClickListener(this);
+        Button buttonD = view.findViewById(R.id.btnD);
+        buttonD.setOnClickListener(this);
+        Button buttonE = view.findViewById(R.id.btnE);
+        buttonE.setOnClickListener(this);
+
+        return view;
+    }
+
+    @Override
+    public void onClick(View view) {
+        String termStartsWith = ((Button) view).getText().toString().trim();
+        Intent intent = new Intent(this.getContext(), ShowTerm.class);
+        intent.putExtra("termStartsWith", termStartsWith);
+        startActivity(intent);
     }
 }

@@ -1,53 +1,138 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SearchTabFragment">
-
-    <!-- TODO: Update blank fragment layout -->
-    <androidx.constraintlayout.widget.ConstraintLayout
+    tools:context=".SearchTabFragment"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:paddingBottom="16dp">
+    
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <RelativeLayout
-            android:id="@+id/relativeLayout2"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/default_title_bar_height"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:text="Search"
-                android:textAppearance="?attr/textAppearanceHeadline6"
-                android:textSize="@dimen/default_title_bar_font_size"/>
-
-        </RelativeLayout>
-
-        <View
-            android:id="@+id/divider"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="?android:attr/listDivider"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/relativeLayout2" />
-
-
-        <TextView
-            android:id="@+id/textView"
+        android:layout_height="wrap_content">
+        <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Search Fragment"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:background="#2196f3"
+            android:text="A"
+            android:textColor="@android:color/white"
+            android:textSize="22sp"
+            android:backgroundTint="@null"
+            android:id="@+id/btnA"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:background="#2196f3"
+            android:text="B"
+            android:textColor="@android:color/white"
+            android:textSize="22sp"
+            android:backgroundTint="@null"
+            android:id="@+id/btnB"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:background="#2196f3"
+            android:text="C"
+            android:textColor="@android:color/white"
+            android:textSize="22sp"
+            android:backgroundTint="@null"
+            android:id="@+id/btnC"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:background="#2196f3"
+            android:text="D"
+            android:textColor="@android:color/white"
+            android:textSize="22sp"
+            android:backgroundTint="@null"
+            android:id="@+id/btnD"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:background="#2196f3"
+            android:text="E"
+            android:textColor="@android:color/white"
+            android:textSize="22sp"
+            android:backgroundTint="@null"
+            android:id="@+id/btnE"/>
 
-</FrameLayout>
+    </LinearLayout>
+
+    <!-- TODO: Update blank fragment layout -->
+<!--    <androidx.constraintlayout.widget.ConstraintLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent">-->
+
+<!--        <RelativeLayout-->
+<!--            android:id="@+id/relativeLayout2"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="@dimen/default_title_bar_height"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toTopOf="parent">-->
+
+<!--            <TextView-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_centerInParent="true"-->
+<!--                android:text="Search"-->
+<!--                android:textAppearance="?attr/textAppearanceHeadline6"-->
+<!--                android:textSize="@dimen/default_title_bar_font_size"/>-->
+
+<!--        </RelativeLayout>-->
+
+<!--        <View-->
+<!--            android:id="@+id/divider"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="1dp"-->
+<!--            android:background="?android:attr/listDivider"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/relativeLayout2" />-->
+
+<!--        <com.google.android.material.textfield.TextInputLayout-->
+<!--            android:id="@+id/field_search"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:hint="Search"-->
+<!--            app:endIconMode="clear_text"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/divider"-->
+<!--            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu">-->
+
+<!--            <com.google.android.material.textfield.TextInputEditText-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content" />-->
+
+<!--            <AutoCompleteTextView-->
+<!--                android:labelFor="@id/field_search"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:inputType="none" />-->
+
+<!--        </com.google.android.material.textfield.TextInputLayout>-->
+
+<!--        &lt;!&ndash;        <TextView&ndash;&gt;-->
+<!--&lt;!&ndash;            android:id="@+id/textView"&ndash;&gt;-->
+<!--&lt;!&ndash;            android:layout_width="wrap_content"&ndash;&gt;-->
+<!--&lt;!&ndash;            android:layout_height="wrap_content"&ndash;&gt;-->
+<!--&lt;!&ndash;            android:text="Search Fragment"&ndash;&gt;-->
+<!--&lt;!&ndash;            app:layout_constraintBottom_toBottomOf="parent"&ndash;&gt;-->
+<!--&lt;!&ndash;            app:layout_constraintEnd_toEndOf="parent"&ndash;&gt;-->
+<!--&lt;!&ndash;            app:layout_constraintStart_toStartOf="parent"&ndash;&gt;-->
+<!--&lt;!&ndash;            app:layout_constraintTop_toTopOf="parent" />&ndash;&gt;-->
+<!--    </androidx.constraintlayout.widget.ConstraintLayout>-->
+
+</LinearLayout>
