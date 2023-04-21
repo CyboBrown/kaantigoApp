@@ -1,5 +1,7 @@
 package com.cansev.kaantigo_learncebuano;
 
+import androidx.annotation.NonNull;
+
 import java.io.Serializable;
 
 public class Term implements Serializable {
@@ -23,5 +25,11 @@ public class Term implements Serializable {
 
     public String getAffixed_form() {
         return affixed_form;
+    }
+
+    @NonNull
+    @Override
+    public String toString() {
+        return word_ceb + " " + written_form + " " + affixed_form;
     }
 }

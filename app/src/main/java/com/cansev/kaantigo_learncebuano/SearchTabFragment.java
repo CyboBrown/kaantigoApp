@@ -1,28 +1,43 @@
 package com.cansev.kaantigo_learncebuano;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 
+import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.ListView;
 
 import com.google.android.material.textfield.TextInputLayout;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link SearchTabFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class SearchTabFragment extends Fragment implements View.OnClickListener {
+public class SearchTabFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -55,7 +70,11 @@ public class SearchTabFragment extends Fragment implements View.OnClickListener 
         return fragment;
     }
 
-    TextInputLayout searchField;
+    SearchView searchView;
+    RecyclerView rvSearchResults;
+    SearchResultAdapter adapter;
+    List<Term> data;
+    DatabaseAdapter databaseAdapter;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -64,7 +83,7 @@ public class SearchTabFragment extends Fragment implements View.OnClickListener 
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-        PreCreateDB.copyDB(this.getContext());
+        PreCreateDB.copyDB(this.requireContext());
     }
 
     @Override
@@ -72,31 +91,35 @@ public class SearchTabFragment extends Fragment implements View.OnClickListener 
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_search_tab, container, false);
-//        searchField = view.findViewById(R.id.field_search);
-//        List<String> items = Arrays.asList("Material", "Design", "Components", "Android");
-//        ArrayAdapter<String> adapter = new ArrayAdapter<>(requireContext(), R.layout.list_item, items);
-//        if (searchField.getEditText() instanceof AutoCompleteTextView) {
-//            ((AutoCompleteTextView) searchField.getEditText()).setAdapter(adapter);
-//        }
-        Button buttonA = view.findViewById(R.id.btnA);
-        buttonA.setOnClickListener(this);
-        Button buttonB = view.findViewById(R.id.btnB);
-        buttonB.setOnClickListener(this);
-        Button buttonC = view.findViewById(R.id.btnC);
-        buttonC.setOnClickListener(this);
-        Button buttonD = view.findViewById(R.id.btnD);
-        buttonD.setOnClickListener(this);
-        Button buttonE = view.findViewById(R.id.btnE);
-        buttonE.setOnClickListener(this);
+
+        databaseAdapter = new DatabaseAdapter(getContext());
+        data = new ArrayList<>();
+        searchView = view.findViewById(R.id.searchView);
+        rvSearchResults = view.findViewById(R.id.rvSearchResults);
+        rvSearchResults.setHasFixedSize(true);
+        rvSearchResults.setLayoutManager(new LinearLayoutManager(getContext()));
+        adapter = new SearchResultAdapter();
+        rvSearchResults.setAdapter(adapter);
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                data = databaseAdapter.getSearchResults(query);
+                adapter.setData(data);
+                adapter.notifyDataSetChanged();
+                return true;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                if (newText.isEmpty()) {
+                    data.clear();
+                    adapter.notifyDataSetChanged();
+                }
+                return true;
+            }
+        });
 
         return view;
-    }
-
-    @Override
-    public void onClick(View view) {
-        String termStartsWith = ((Button) view).getText().toString().trim();
-        Intent intent = new Intent(this.getContext(), ShowTerm.class);
-        intent.putExtra("termStartsWith", termStartsWith);
-        startActivity(intent);
     }
 }
