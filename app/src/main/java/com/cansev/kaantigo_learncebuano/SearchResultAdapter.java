@@ -20,12 +20,13 @@ public class SearchResultAdapter extends RecyclerView.Adapter<SearchResultAdapte
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
-        TextView tvTerm, tvTermDef;
+        TextView tvTerm, tvTermDef, tvTermTrans;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             tvTerm = itemView.findViewById(R.id.tvTerm);
             tvTermDef = itemView.findViewById(R.id.tvTermDef);
+            tvTermTrans = itemView.findViewById(R.id.tvTermTrans);
         }
     }
 
@@ -51,7 +52,8 @@ public class SearchResultAdapter extends RecyclerView.Adapter<SearchResultAdapte
     public void onBindViewHolder(@NonNull SearchResultAdapter.ViewHolder holder, int position) {
         Term term = data.get(position);
         holder.tvTerm.setText(term.getWritten_form());
-        holder.tvTermDef.setText(term.getWord_ceb());
+        holder.tvTermDef.setText("(" + term.getWord_ceb() + ")");
+        holder.tvTermTrans.setText(term.getWord_en());
     }
 
     @Override

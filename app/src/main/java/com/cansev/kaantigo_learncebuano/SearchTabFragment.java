@@ -1,9 +1,5 @@
 package com.cansev.kaantigo_learncebuano;
 
-import android.annotation.SuppressLint;
-import android.content.Intent;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 
 import androidx.appcompat.widget.SearchView;
@@ -11,26 +7,12 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.AutoCompleteTextView;
-import android.widget.Button;
-import android.widget.ListView;
 
-import com.google.android.material.textfield.TextInputLayout;
-
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.Objects;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -83,7 +65,7 @@ public class SearchTabFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-        PreCreateDB.copyDB(this.requireContext());
+//        PreCreateDB.copyDB(this.requireContext());
     }
 
     @Override

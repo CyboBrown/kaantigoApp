@@ -2,20 +2,52 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:padding="16dp">
+    android:layout_height="wrap_content">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/tvTerm"
-        android:text="Term"
-        android:textSize="24sp"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/tvTermDef"
-        android:text="Term Definition"
-        android:textSize="18sp"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        android:padding="@dimen/default_padding_half">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvTerm"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Term"
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/tvTermDef"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Term Definition"
+                android:textSize="18sp" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tvTermTrans"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Term Translation"
+            android:textAlignment="textEnd"
+            android:textSize="20sp" />
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/divider2"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_weight="1"
+        android:background="?android:attr/listDivider" />
 
 </LinearLayout>

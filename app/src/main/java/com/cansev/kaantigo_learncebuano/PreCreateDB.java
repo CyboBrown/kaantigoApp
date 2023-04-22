@@ -9,20 +9,21 @@ import java.io.InputStream;
 
 public class PreCreateDB {
     public static void copyDB(Context context) {
+        String dbName = "kaantigolangdb.db";
         String destPath = "/data/data/" + context.getPackageName() + "/databases";
-        String destPathWithFileName = destPath + "/kaantigolangdb.db";
+        String destPathWithFileName = destPath + "/" + dbName;
         File fPath = new File(destPath);
         File fPathWithName = new File(destPathWithFileName);
         if(!fPath.exists()) {
             fPath.mkdirs();
             try {
-                rawCopy(context.getAssets().open("kaantigolangdb.db"), new FileOutputStream(destPathWithFileName));
+                rawCopy(context.getAssets().open(dbName), new FileOutputStream(destPathWithFileName));
             } catch (IOException e) {
                 e.printStackTrace();
             }
         } else if(!fPathWithName.exists()) {
             try {
-                rawCopy(context.getAssets().open("kaantigolangdb.db"), new FileOutputStream(destPath));
+                rawCopy(context.getAssets().open(dbName), new FileOutputStream(destPath));
             } catch (IOException e) {
                 e.printStackTrace();
             }
