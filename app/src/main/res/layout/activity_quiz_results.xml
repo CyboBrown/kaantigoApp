@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".quiz.QuizResults">
+
+    <TextView
+        android:id="@+id/textView12"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Congrats" />
+
+    <TextView
+        android:id="@+id/correctAnswers"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Correct Answers: 0"
+        android:textStyle="bold"
+        android:layout_below="@id/textView12"/>
+
+    <TextView
+        android:id="@+id/incorrectAnswers"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Wrong Answers: 0"
+        android:textStyle="bold"
+        android:layout_below="@id/correctAnswers"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/startNewQuiz"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="Start New Quiz"
+        android:textColor="@color/black"
+        android:layout_below="@id/incorrectAnswers"/>
+    
+</RelativeLayout>

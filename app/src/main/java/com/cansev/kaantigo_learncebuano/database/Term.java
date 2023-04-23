@@ -1,4 +1,4 @@
-package com.cansev.kaantigo_learncebuano;
+package com.cansev.kaantigo_learncebuano.database;
 
 import androidx.annotation.NonNull;
 
@@ -9,7 +9,6 @@ public class Term implements Serializable {
     private String written_form;
     private String affixed_form;
     private String word_en;
-    private String verb_type;
 
 //    public Term(String word_ceb, String written_form, String affixed_form) {
 //        this.word_ceb = word_ceb;
@@ -17,12 +16,11 @@ public class Term implements Serializable {
 //        this.affixed_form = affixed_form;
 //    }
 
-    public Term(String word_ceb, String written_form, String affixed_form, String word_en, String verb_type) {
+    public Term(String word_ceb, String written_form, String affixed_form, String word_en) {
         this.word_ceb = word_ceb;
         this.written_form = written_form;
         this.affixed_form = affixed_form;
         this.word_en = word_en;
-        this.verb_type = verb_type;
     }
 
     public String getWord_ceb() {
@@ -41,13 +39,18 @@ public class Term implements Serializable {
         return word_en;
     }
 
-    public String getVerb_type() {
-        return verb_type;
-    }
-
     @NonNull
     @Override
     public String toString() {
         return word_ceb + " " + written_form + " " + affixed_form;
+    }
+}
+
+class Verb extends Term {
+    private String verb_type;
+
+    public Verb(String word_ceb, String written_form, String affixed_form, String word_en, String verb_type) {
+        super(word_ceb, written_form, affixed_form, word_en);
+        this.verb_type = verb_type;
     }
 }

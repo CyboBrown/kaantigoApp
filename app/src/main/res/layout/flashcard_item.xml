@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.wajahatkarim3.easyflipview.EasyFlipView
+        android:id="@+id/easyFlipView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:autoFlipBack="false"
+        app:flipDuration="400"
+        app:flipEnabled="true"
+        app:flipFrom="right"
+        app:flipOnTouch="true"
+        app:flipType="horizontal">
+
+        <!-- Back Layout Goes Here -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/backText"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/default_margin"
+            android:animateLayoutChanges="true"
+            android:checkable="true"
+            android:clickable="true"
+            android:focusable="true"
+            android:textAlignment="center"
+            app:cardCornerRadius="@dimen/default_card_corner_radius"
+            app:cardElevation="@dimen/default_card_elevation"
+            app:contentPadding="@dimen/default_padding"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.498">
+
+            <TextView
+                android:id="@+id/backTextView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="Christian"
+                android:textAlignment="center"
+                android:textSize="22sp" />
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Front Layout Goes Here -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/frontText"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/default_margin"
+            android:animateLayoutChanges="true"
+            android:checkable="true"
+            android:clickable="true"
+            android:focusable="true"
+            android:textAlignment="center"
+            app:cardCornerRadius="@dimen/default_card_corner_radius"
+            app:cardElevation="@dimen/default_card_elevation"
+            app:contentPadding="@dimen/default_padding"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.498">
+
+            <TextView
+                android:id="@+id/frontTextView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="Gwapo"
+                android:textAlignment="center"
+                android:textSize="22sp"/>
+
+        </com.google.android.material.card.MaterialCardView>
+
+    </com.wajahatkarim3.easyflipview.EasyFlipView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

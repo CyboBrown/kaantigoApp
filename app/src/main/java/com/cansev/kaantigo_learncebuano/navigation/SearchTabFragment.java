@@ -1,4 +1,4 @@
-package com.cansev.kaantigo_learncebuano;
+package com.cansev.kaantigo_learncebuano.navigation;
 
 import android.os.Bundle;
 
@@ -10,6 +10,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.cansev.kaantigo_learncebuano.R;
+import com.cansev.kaantigo_learncebuano.database.DatabaseAdapter;
+import com.cansev.kaantigo_learncebuano.database.PreCreateDB;
+import com.cansev.kaantigo_learncebuano.database.Term;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -65,7 +70,7 @@ public class SearchTabFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-//        PreCreateDB.copyDB(this.requireContext());
+        PreCreateDB.copyDB(this.requireContext());
     }
 
     @Override

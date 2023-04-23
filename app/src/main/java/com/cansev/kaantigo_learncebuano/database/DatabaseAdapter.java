@@ -1,8 +1,9 @@
-package com.cansev.kaantigo_learncebuano;
+package com.cansev.kaantigo_learncebuano.database;
 
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import java.util.ArrayList;
@@ -24,29 +25,37 @@ public class DatabaseAdapter {
 
     public ArrayList<Term> getSearchResults(String searchInput) {
         termList.clear();
-        Cursor cursor = db.query(DatabaseHelper.TABLE_NAME, new String[]{DatabaseHelper.KEY_WORD_CEB, DatabaseHelper.KEY_WRITTEN_FORM, DatabaseHelper.KEY_AFFIXED_FORM, DatabaseHelper.KEY_WORD_EN, DatabaseHelper.KEY_VERB_TYPE},
-                DatabaseHelper.KEY_WRITTEN_FORM + " LIKE '" + searchInput + "%'", null, null, null, "written_form");
-        System.out.println(cursor);
-        while(cursor.moveToNext()) {
-            int index1 = cursor.getColumnIndex(DatabaseHelper.KEY_WORD_CEB);
-            String word_ceb = cursor.getString(index1);
-            int index2 = cursor.getColumnIndex(DatabaseHelper.KEY_WRITTEN_FORM);
-            String written_form = cursor.getString(index2);
-            int index3 = cursor.getColumnIndex(DatabaseHelper.KEY_AFFIXED_FORM);
-            String affixed_form = cursor.getString(index3);
-            int index4 = cursor.getColumnIndex(DatabaseHelper.KEY_WORD_EN);
-            String word_en = cursor.getString(index4);
-            int index5 = cursor.getColumnIndex(DatabaseHelper.KEY_VERB_TYPE);
-            String verb_type = cursor.getString(index5);
-            Term term = new Term(word_ceb, written_form, affixed_form, word_en, verb_type);
-            termList.add(term);
+        Cursor cursor = null;
+        try {
+            cursor = db.query(DatabaseHelper.TABLE_NAME, new String[]{DatabaseHelper.KEY_WORD_CEB, DatabaseHelper.KEY_WRITTEN_FORM, DatabaseHelper.KEY_AFFIXED_FORM, DatabaseHelper.KEY_WORD_EN, DatabaseHelper.KEY_VERB_TYPE},
+                    DatabaseHelper.KEY_WRITTEN_FORM + " LIKE '" + searchInput + "%'", null, null, null, "written_form");
+            System.out.println(cursor);
+            while(cursor.moveToNext()) {
+                int index1 = cursor.getColumnIndex(DatabaseHelper.KEY_WORD_CEB);
+                String word_ceb = cursor.getString(index1);
+                int index2 = cursor.getColumnIndex(DatabaseHelper.KEY_WRITTEN_FORM);
+                String written_form = cursor.getString(index2);
+                int index3 = cursor.getColumnIndex(DatabaseHelper.KEY_AFFIXED_FORM);
+                String affixed_form = cursor.getString(index3);
+                int index4 = cursor.getColumnIndex(DatabaseHelper.KEY_WORD_EN);
+                String word_en = cursor.getString(index4);
+                int index5 = cursor.getColumnIndex(DatabaseHelper.KEY_VERB_TYPE);
+                String verb_type = cursor.getString(index5);
+                Term term = new Verb(word_ceb, written_form, affixed_form, word_en, verb_type);
+                termList.add(term);
+            }
+            for(Term term : termList) {
+                System.out.println(term);
+                System.out.println("***");
+            }
+            System.out.println("___");
+        } catch (SQLiteException e) {
+            return termList;
+        } finally {
+            if(cursor != null) {
+                cursor.close();
+            }
         }
-        for(Term term : termList) {
-            System.out.println(term);
-            System.out.println("***");
-        }
-        System.out.println("___");
-        cursor.close();
         return termList;
     }
 

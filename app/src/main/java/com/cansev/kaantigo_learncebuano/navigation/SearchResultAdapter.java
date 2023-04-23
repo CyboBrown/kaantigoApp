@@ -1,4 +1,4 @@
-package com.cansev.kaantigo_learncebuano;
+package com.cansev.kaantigo_learncebuano.navigation;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -7,6 +7,9 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.cansev.kaantigo_learncebuano.R;
+import com.cansev.kaantigo_learncebuano.database.Term;
 
 import java.util.List;
 

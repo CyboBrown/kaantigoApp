@@ -13,11 +13,14 @@
         android:theme="@style/Theme.KaantigoLearnCebuano"
         tools:targetApi="31">
         <activity
-            android:name=".QuizActivity"
+            android:name=".quiz.QuizResults"
+            android:exported="false" />
+        <activity
+            android:name=".quiz.QuizActivity"
             android:label="Quiz"
             android:exported="false"/>
         <activity
-            android:name=".FlashcardsActivity"
+            android:name=".flashcard.FlashcardsActivity"
             android:label="Flashcards"
             android:exported="false"/>
         <activity

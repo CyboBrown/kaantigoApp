@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LessonTabFragment">
+    tools:context=".navigation.LessonTabFragment">
 
     <!-- TODO: Update blank fragment layout -->
 
@@ -60,7 +60,7 @@
                 android:orientation="vertical">
 
                 <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/card_flashcards"
+                    android:id="@+id/card_quiz1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/default_margin_half"

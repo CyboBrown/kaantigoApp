@@ -1,4 +1,4 @@
-package com.cansev.kaantigo_learncebuano;
+package com.cansev.kaantigo_learncebuano.database;
 
 import android.content.Context;
 

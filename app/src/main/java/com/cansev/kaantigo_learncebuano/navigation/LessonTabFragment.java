@@ -1,4 +1,4 @@
-package com.cansev.kaantigo_learncebuano;
+package com.cansev.kaantigo_learncebuano.navigation;
 
 import android.animation.LayoutTransition;
 import android.graphics.drawable.Icon;
@@ -17,6 +17,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 
+import com.cansev.kaantigo_learncebuano.R;
 import com.google.android.material.chip.Chip;
 
 /**

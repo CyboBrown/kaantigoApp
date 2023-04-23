@@ -4,6 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
+import com.cansev.kaantigo_learncebuano.navigation.LessonTabFragment;
+import com.cansev.kaantigo_learncebuano.navigation.ProfileTabFragment;
+import com.cansev.kaantigo_learncebuano.navigation.QuizTabFragment;
+import com.cansev.kaantigo_learncebuano.navigation.SearchTabFragment;
+import com.cansev.kaantigo_learncebuano.navigation.ToolsTabFragment;
 import com.google.android.material.badge.BadgeDrawable;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -20,7 +25,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        PreCreateDB.copyDB(this);
 
         bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setSelectedItemId(R.id.page_1);

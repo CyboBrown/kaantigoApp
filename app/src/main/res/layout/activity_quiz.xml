@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".QuizActivity"
+    tools:context=".quiz.QuizActivity"
     android:orientation="vertical">
 
     <RelativeLayout
@@ -24,7 +24,7 @@
             android:text="Quiz"
             android:textAppearance="?attr/textAppearanceHeadline6"
             android:textSize="@dimen/default_title_bar_font_size" />
-        
+
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -48,7 +48,7 @@
                 android:text="00:59"
                 android:textColor="@color/black"/>
         </LinearLayout>
-            
+
     </RelativeLayout>
 
 
@@ -57,7 +57,7 @@
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:progress="10"
+        android:progress="0"
         android:progressTint="?attr/colorPrimary"
         android:minHeight="0dp"/>
 
@@ -73,7 +73,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/default_margin"
-            android:layout_marginTop="@dimen/default_margin"
+            android:layout_marginTop="20dp"
             android:layout_marginRight="@dimen/default_margin"
             android:layout_marginBottom="@dimen/default_margin"
             android:animateLayoutChanges="true"
@@ -102,6 +102,7 @@
                         android:orientation="vertical">
 
                         <TextView
+                            android:id="@+id/description"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="@dimen/default_spacing_minor"
@@ -111,6 +112,7 @@
                             android:textColor="?android:attr/textColorSecondary" />
 
                         <TextView
+                            android:id="@+id/question"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="I bought a new house."
@@ -129,7 +131,7 @@
         </com.google.android.material.card.MaterialCardView>
 
         <com.google.android.material.card.MaterialCardView
-            android:id="@+id/card_answer1"
+            android:id="@+id/card_option1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/default_margin"
@@ -144,6 +146,7 @@
             app:contentPadding="@dimen/default_padding_half">
 
             <TextView
+                android:id="@+id/option1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Mipalit ko sa bag-o nga balay."
@@ -153,7 +156,7 @@
         </com.google.android.material.card.MaterialCardView>
 
         <com.google.android.material.card.MaterialCardView
-            android:id="@+id/card_answer2"
+            android:id="@+id/card_option2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/default_margin"
@@ -168,6 +171,7 @@
             app:contentPadding="@dimen/default_padding_half">
 
             <TextView
+                android:id="@+id/option2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Mopalit ko og bag-o nga balay."
@@ -177,7 +181,7 @@
         </com.google.android.material.card.MaterialCardView>
 
         <com.google.android.material.card.MaterialCardView
-            android:id="@+id/card_answer3"
+            android:id="@+id/card_option3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/default_margin"
@@ -192,6 +196,7 @@
             app:contentPadding="@dimen/default_padding_half">
 
             <TextView
+                android:id="@+id/option3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Mopalit ko sa bag-o nga balay."
@@ -201,7 +206,7 @@
         </com.google.android.material.card.MaterialCardView>
 
         <com.google.android.material.card.MaterialCardView
-            android:id="@+id/card_answer4"
+            android:id="@+id/card_option4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/default_margin"
@@ -217,9 +222,36 @@
             app:contentPadding="@dimen/default_padding_half">
 
             <TextView
+                android:id="@+id/option4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Mipalit ko og bag-o nga balay."
+                android:textAlignment="center"
+                android:textAppearance="?attr/textAppearanceHeadline6" />
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/card_next_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/default_margin"
+            android:layout_marginTop="50dp"
+            android:layout_marginRight="@dimen/default_margin"
+            android:layout_marginBottom="@dimen/default_margin"
+            android:animateLayoutChanges="true"
+            android:checkable="true"
+            android:clickable="true"
+            android:focusable="true"
+            app:cardCornerRadius="@dimen/default_card_corner_radius_half"
+            app:cardElevation="@dimen/default_card_elevation"
+            app:contentPadding="@dimen/default_padding_half">
+
+            <TextView
+                android:id="@+id/next_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Next"
                 android:textAlignment="center"
                 android:textAppearance="?attr/textAppearanceHeadline6" />
 
