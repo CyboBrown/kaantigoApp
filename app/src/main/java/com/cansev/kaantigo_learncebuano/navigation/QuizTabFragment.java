@@ -86,9 +86,9 @@ public class QuizTabFragment extends Fragment implements View.OnClickListener  {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_quiz_tab, container, false);
 
-        btn1 = view.findViewById(R.id.btn1);
-        btn2 = view.findViewById(R.id.btn2);
-        btn3 = view.findViewById(R.id.btn3);
+        btn1 = view.findViewById(R.id.btn_basic1);
+        btn2 = view.findViewById(R.id.btn_basic2);
+        btn3 = view.findViewById(R.id.btn_basic3);
 
         btn1.setOnClickListener(view1 -> {
             Intent intent1 = new Intent(getActivity(), QuizActivity.class);
@@ -130,7 +130,7 @@ public class QuizTabFragment extends Fragment implements View.OnClickListener  {
             case R.id.card_quiz1:
                 cardop_quiz1 = view.findViewById(R.id.cardop_lesson1);
                 expand_card = view.findViewById(R.id.expand_card);
-                btn1 = btn1.findViewById(R.id.btn1);
+                btn1 = btn1.findViewById(R.id.btn_basic1);
 //                TransitionManager.beginDelayedTransition(card_lesson1, new AutoTransition());
                 if (cardop_quiz1.getVisibility() == View.GONE) {
                     TransitionManager.beginDelayedTransition(card_quiz1, new AutoTransition());

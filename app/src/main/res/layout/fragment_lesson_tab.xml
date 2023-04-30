@@ -100,17 +100,10 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="@dimen/default_spacing_minor"
-                                    android:text="Secondary Text"
+                                    android:text="Learn about pronouns and case markers"
                                     android:textAppearance="?attr/textAppearanceBody2"
                                     android:textColor="?android:attr/textColorSecondary" />
 
-                                <!--                    <TextView-->
-                                <!--                        android:layout_width="wrap_content"-->
-                                <!--                        android:layout_height="wrap_content"-->
-                                <!--                        android:layout_marginTop="16dp"-->
-                                <!--                        android:text="Supporting Text"-->
-                                <!--                        android:textAppearance="?attr/textAppearanceBody2"-->
-                                <!--                        android:textColor="?android:attr/textColorSecondary" />-->
                             </LinearLayout>
 
                             <ImageView
@@ -135,38 +128,54 @@
                                 android:paddingTop="4dp"
                                 android:visibility="visible" />
 
-                            <Button
-                                android:id="@+id/btn1"
-                                style="@style/Widget.MaterialComponents.Button.TextButton"
+                            <com.google.android.material.button.MaterialButton
+                                android:id="@+id/btn_basic1"
+                                style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:text="Case Markers" />
+                                android:textAllCaps="false"
+                                android:text="Basics 1 - Focus Case"
+                                android:textAlignment="textStart"
+                                android:textSize="@dimen/default_lesson_item_font_size"
+                                app:icon="@drawable/ic_circle_check"
+                                app:iconSize="@dimen/default_lesson_icon_size"
+                                app:iconPadding="@dimen/default_spacing_major"/>
 
                             <com.google.android.material.divider.MaterialDivider
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:visibility="visible" />
 
-                            <Button
-                                android:id="@+id/btn2"
+                            <com.google.android.material.button.MaterialButton
+                                android:id="@+id/btn_basic2"
                                 style="@style/Widget.MaterialComponents.Button.TextButton"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:enabled="false"
-                                android:text="Personal Pronouns" />
+                                android:textAllCaps="false"
+                                android:text="Basics 2 - Pronouns"
+                                android:textAlignment="textStart"
+                                android:textSize="@dimen/default_lesson_item_font_size"
+                                app:icon="@drawable/ic_circle_current"
+                                app:iconSize="@dimen/default_lesson_icon_size"
+                                app:iconPadding="@dimen/default_spacing_major"/>
 
                             <com.google.android.material.divider.MaterialDivider
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:visibility="visible" />
 
-                            <Button
-                                android:id="@+id/btn3"
+                            <com.google.android.material.button.MaterialButton
+                                android:id="@+id/btn_basic3"
                                 style="@style/Widget.MaterialComponents.Button.TextButton"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:enabled="false"
-                                android:text="Demonstrative Pronouns" />
+                                android:textAllCaps="false"
+                                android:text="Basics 3 - Non-Focus Cases"
+                                android:textAlignment="textStart"
+                                android:textSize="@dimen/default_lesson_item_font_size"
+                                app:icon="@drawable/ic_circle_uncheck"
+                                app:iconSize="@dimen/default_lesson_icon_size"
+                                app:iconPadding="@dimen/default_spacing_major"/>
 
                             <com.google.android.material.divider.MaterialDivider
                                 android:layout_width="match_parent"
@@ -190,6 +199,16 @@
                                         app:singleLine="true">
 
                                         <com.google.android.material.chip.Chip
+                                            android:id="@+id/chip_case_markers"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:text="Case Markers"
+                                            android:enabled="false"
+                                            app:chipIcon="@drawable/ic_table"
+                                            app:chipStartPadding="@dimen/default_chip_padding"
+                                            app:textStartPadding="@dimen/default_chip_padding" />
+
+                                        <com.google.android.material.chip.Chip
                                             android:id="@+id/chip_personal_pronouns"
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
@@ -202,7 +221,6 @@
                                             android:id="@+id/chip_demonstrative_pronouns"
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
-                                            android:enabled="false"
                                             android:text="Demonstrative Pronouns"
                                             app:chipIcon="@drawable/ic_table"
                                             app:chipStartPadding="@dimen/default_chip_padding"

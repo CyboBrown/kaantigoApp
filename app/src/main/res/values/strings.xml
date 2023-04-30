@@ -7,4 +7,12 @@
     <string name="profile">Profile</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!-- Lesson Strings -->
+    <string name="lesson_basic1_title1">Focus Markers</string>
+    <string name="lesson_basic1_body1">\t"<i>Ang</i>" is a general focus marker. It is placed before nouns, verbs, and adjectives to signify that they are the focus or the topic of the sentence. It also implies that the object which follows is definite or specific. "<i>Si</i>", on the other hand, is a personal focus marker. Its functions is the same as that of <i>ang</i> but its use is limited to names of people and personified animals or objects. Names of inanimate and abstract things, such as brands, companies, and countries, are preposed by <i>ang</i> instead of <i>si</i>. Focus markers also have a special relationship to the main verb of the sentence.</string>
+    <string name="lesson_basic1_title2">Zero Copula</string>
+    <string name="lesson_basic1_body2">\tCebuano, and most other PH Languages, does not have any copula similar to the English “be” or the Spanish “ser”. Instead, it is much more akin to Russian or Malay where copulas are already implied between nouns, pronouns, and adjectives. Copulas are used to link the subject of a clause to a subject complement which is a predicative expression that either describes or renames the subject.</string>
+    <string name="lesson_basic1_title3">Flexible Word Order</string>
+    <string name="lesson_basic1_body3">\tCebuano has a relatively flexible word order. Focus words and phrases, as well as main verbs, can be rearranged in any order. Focus pronouns such as ako, ikaw, siya, kini, and kana can also be rearranged but they are usually shortened to ko, ka, sya, ni, and na when they are postposed (positioned after a word). Full forms are always used when these pronouns are situated at the beginning of a sentence.</string>
 </resources>

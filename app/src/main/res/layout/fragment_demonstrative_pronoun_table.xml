@@ -45,7 +45,7 @@
             android:layout_marginTop="@dimen/default_margin"
             android:layout_marginRight="@dimen/default_margin_half"
             android:layout_marginBottom="@dimen/default_margin_half"
-            android:text="Personal Pronouns"
+            android:text="Demonstrative Pronouns"
             android:textAlignment="center"
             android:textSize="20sp"
             android:textStyle="bold">
@@ -79,6 +79,8 @@
                         android:layout_height="match_parent">
 
                         <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
                             android:background="@color/colorPrimaryDark"
                             android:paddingHorizontal="@dimen/default_padding"
                             android:paddingVertical="@dimen/default_padding_half">
@@ -125,26 +127,26 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="2"
-                                android:text="I"
+                                android:text="this (temporal)"
                                 android:textStyle="italic" />
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:text="ako" />
+                                android:text="karon"/>
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:text="nako" />
+                                android:text="niaron" />
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:text="kanako" />
+                                android:text="kan-aron" />
                         </TableRow>
 
                         <TableRow
@@ -156,26 +158,26 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="2"
-                                android:text="we (inclusive)"
+                                android:text="this (proximal)"
                                 android:textStyle="italic" />
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:text="kita" />
+                                android:text="kari" />
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:text="nato" />
+                                android:text="niari" />
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:text="kanato" />
+                                android:text="kan-ari" />
                         </TableRow>
 
                         <TableRow
@@ -187,26 +189,26 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="2"
-                                android:text="we (exclusive)"
+                                android:text="this (mediaproximal)"
                                 android:textStyle="italic" />
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:text="kami" />
+                                android:text="kini" />
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:text="namo" />
+                                android:text="niini" />
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:text="kanamo" />
+                                android:text="kan-ini" />
                         </TableRow>
 
                         <TableRow
@@ -218,26 +220,26 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="2"
-                                android:text="you (singular)"
+                                android:text="that (medial)"
                                 android:textStyle="italic" />
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:text="ikaw" />
+                                android:text="kana" />
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:text="nimo" />
+                                android:text="niana" />
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:text="kanimo" />
+                                android:text="kan-ana" />
                         </TableRow>
 
                         <TableRow
@@ -249,88 +251,26 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="2"
-                                android:text="you (plural)"
+                                android:text="that (distal)"
                                 android:textStyle="italic" />
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:text="kamo" />
+                                android:text="kadto" />
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:text="ninyo" />
+                                android:text="niadto" />
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:text="kaninyo" />
-                        </TableRow>
-
-                        <TableRow
-                            android:background="#F0F7F7"
-                            android:paddingHorizontal="@dimen/default_padding"
-                            android:paddingVertical="@dimen/default_padding_half">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="2"
-                                android:text="he, she, it"
-                                android:textStyle="italic" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="siya" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="niya" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="kaniya" />
-                        </TableRow>
-
-                        <TableRow
-                            android:background="#F0F7F7"
-                            android:paddingHorizontal="@dimen/default_padding"
-                            android:paddingVertical="@dimen/default_padding_half">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="2"
-                                android:text="they"
-                                android:textStyle="italic" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="sila" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="nila" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="kanila" />
+                                android:text="kan-adto" />
                         </TableRow>
                     </TableLayout>
                 </LinearLayout>

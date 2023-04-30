@@ -13,10 +13,12 @@ import android.transition.TransitionManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 
+import com.cansev.kaantigo_learncebuano.LessonFragment;
 import com.cansev.kaantigo_learncebuano.R;
 import com.google.android.material.chip.Chip;
 
@@ -60,6 +62,8 @@ public class LessonTabFragment extends Fragment implements View.OnClickListener 
 
     CardView card_lesson1;
     Chip chip_personal_pronouns;
+    Chip chip_demonstrative_pronouns;
+    Button btn_basic1;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -76,10 +80,17 @@ public class LessonTabFragment extends Fragment implements View.OnClickListener 
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_lesson_tab, container, false);
+
         card_lesson1 = view.findViewById(R.id.card_flashcards);
         chip_personal_pronouns = view.findViewById(R.id.chip_personal_pronouns);
+        chip_demonstrative_pronouns = view.findViewById(R.id.chip_demonstrative_pronouns);
+        btn_basic1 = view.findViewById(R.id.btn_basic1);
+
         card_lesson1.setOnClickListener(this);
         chip_personal_pronouns.setOnClickListener(this);
+        chip_demonstrative_pronouns.setOnClickListener(this);
+        btn_basic1.setOnClickListener(this);
+
         card_lesson1.getLayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
         ProgressBar pb_lesson1 = view.findViewById(R.id.pb_lesson1);
         pb_lesson1.setProgress(50, true);
@@ -104,8 +115,13 @@ public class LessonTabFragment extends Fragment implements View.OnClickListener 
                 }
                 break;
             case R.id.chip_personal_pronouns:
-                getParentFragmentManager().beginTransaction().replace(R.id.container, new PersonalPronounTableFragment()).commit();
-                System.out.println("Table");
+                getParentFragmentManager().beginTransaction().replace(R.id.container, new PersonalPronounTableFragment()).addToBackStack(null).commit();
+                break;
+            case R.id.chip_demonstrative_pronouns:
+                getParentFragmentManager().beginTransaction().replace(R.id.container, new DemonstrativePronounTableFragment()).addToBackStack(null).commit();
+                break;
+            case R.id.btn_basic1:
+                getParentFragmentManager().beginTransaction().replace(R.id.container, new LessonFragment()).addToBackStack(null).commit();
                 break;
         }
     }

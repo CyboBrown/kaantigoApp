@@ -1,0 +1,499 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LessonFragment">
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/relativeLayout2"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/default_title_bar_height">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="Basics 1 - Focus Case"
+                android:textAppearance="?attr/textAppearanceHeadline6"
+                android:textSize="@dimen/default_title_bar_font_size" />
+
+        </RelativeLayout>
+
+        <View
+            android:id="@+id/divider"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="?android:attr/listDivider" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/default_margin"
+                    android:layout_marginTop="@dimen/default_margin"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tvLessonTitle1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/default_margin_half"
+                        android:text="@string/lesson_basic1_title1"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/default_lesson_title_font_size"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvLessonBody1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:justificationMode="inter_word"
+                        android:text="@string/lesson_basic1_body1"
+                        android:textSize="@dimen/default_lesson_body_font_size"
+                        tools:targetApi="o" />
+
+                </LinearLayout>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/default_margin"
+                    android:animateLayoutChanges="true"
+                    app:cardCornerRadius="@dimen/default_card_corner_radius"
+                    app:cardElevation="@dimen/default_card_elevation">
+
+                    <TableLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <TableRow
+                            android:background="@color/colorPrimaryDark"
+                            android:paddingHorizontal="@dimen/default_padding"
+                            android:paddingVertical="@dimen/default_padding_half">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="Example"
+                                android:textColor="@color/white"
+                                android:textStyle="bold" />
+
+                        </TableRow>
+
+                        <TableRow
+                            android:background="#F0F7F7"
+                            android:paddingHorizontal="@dimen/default_padding"
+                            android:paddingVertical="@dimen/default_padding_half">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="si Rachel" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="ang babayi" />
+                        </TableRow>
+
+                        <TableRow
+                            android:background="#F0F7F7"
+                            android:paddingHorizontal="@dimen/default_padding"
+                            android:paddingVertical="@dimen/default_padding_half">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="si Brownie" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="ang iro" />
+                        </TableRow>
+
+                        <TableRow
+                            android:background="#F0F7F7"
+                            android:paddingHorizontal="@dimen/default_padding"
+                            android:paddingVertical="@dimen/default_padding_half">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="ang Japan" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="ang Marvel" />
+                        </TableRow>
+                    </TableLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/default_margin"
+                    android:layout_marginTop="@dimen/default_margin"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tvLessonTitle2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/default_margin_half"
+                        android:text="@string/lesson_basic1_title2"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/default_lesson_title_font_size"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvLessonBody2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:justificationMode="inter_word"
+                        android:text="@string/lesson_basic1_body2"
+                        android:textSize="@dimen/default_lesson_body_font_size"
+                        tools:targetApi="o" />
+
+                </LinearLayout>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/default_margin"
+                    android:animateLayoutChanges="true"
+                    app:cardCornerRadius="@dimen/default_card_corner_radius"
+                    app:cardElevation="@dimen/default_card_elevation">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TableLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <TableRow
+                                android:background="@color/colorPrimaryDark"
+                                android:paddingHorizontal="@dimen/default_padding"
+                                android:paddingVertical="@dimen/default_padding_half">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="Example"
+                                    android:textColor="@color/white"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="Gloss"
+                                    android:textColor="@color/white"
+                                    android:textStyle="bold" />
+
+                            </TableRow>
+
+                            <TableRow
+                                android:background="#F0F7F7"
+                                android:paddingHorizontal="@dimen/default_padding"
+                                android:paddingVertical="@dimen/default_padding_half">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="Si Christian ang lalaki." />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="The man is Christian."
+                                    android:textStyle="italic"/>
+                            </TableRow>
+
+                            <TableRow
+                                android:background="#F0F7F7"
+                                android:paddingHorizontal="@dimen/default_padding"
+                                android:paddingVertical="@dimen/default_padding_half">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="Ang babayi si Maria." />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="Maria is the woman."
+                                    android:textStyle="italic"/>
+                            </TableRow>
+
+                            <TableRow
+                                android:background="#F0F7F7"
+                                android:paddingHorizontal="@dimen/default_padding"
+                                android:paddingVertical="@dimen/default_padding_half">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="Ang babayi ang doktor." />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="The woman is the doctor."
+                                    android:textStyle="italic"/>
+                            </TableRow>
+
+                            <TableRow
+                                android:background="#F0F7F7"
+                                android:paddingHorizontal="@dimen/default_padding"
+                                android:paddingVertical="@dimen/default_padding_half">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="Si Ena si Elena." />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="Ena is Elena."
+                                    android:textStyle="italic"/>
+                            </TableRow>
+                        </TableLayout>
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/default_margin"
+                    android:layout_marginTop="@dimen/default_margin"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tvLessonTitle3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/default_margin_half"
+                        android:text="@string/lesson_basic1_title3"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/default_lesson_title_font_size"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvLessonBody3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:justificationMode="inter_word"
+                        android:text="@string/lesson_basic1_body3"
+                        android:textSize="@dimen/default_lesson_body_font_size"
+                        tools:targetApi="o" />
+
+                </LinearLayout>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/default_margin"
+                    android:animateLayoutChanges="true"
+                    app:cardCornerRadius="@dimen/default_card_corner_radius"
+                    app:cardElevation="@dimen/default_card_elevation">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TableLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <TableRow
+                                android:background="@color/colorPrimaryDark"
+                                android:paddingHorizontal="@dimen/default_padding"
+                                android:paddingVertical="@dimen/default_padding_half">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="Gloss"
+                                    android:textColor="@color/white"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="Cebuano Equivalent"
+                                    android:textColor="@color/white"
+                                    android:textStyle="bold" />
+
+                            </TableRow>
+
+                            <TableRow
+                                android:background="#F0F7F7"
+                                android:paddingHorizontal="@dimen/default_padding"
+                                android:paddingVertical="@dimen/default_padding_half">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="I am Christian."
+                                    android:textStyle="italic"/>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="Ako si Christian." />
+
+                            </TableRow>
+
+                            <TableRow
+                                android:background="#F0F7F7"
+                                android:paddingHorizontal="@dimen/default_padding"
+                                android:paddingVertical="@dimen/default_padding_half">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="Si Christian ko." />
+
+                            </TableRow>
+
+                            <TableRow
+                                android:background="#F0F7F7"
+                                android:paddingHorizontal="@dimen/default_padding"
+                                android:paddingVertical="@dimen/default_padding_half">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="Si Christian ako." />
+
+                            </TableRow>
+
+                            <TableRow
+                                android:background="#F0F7F7"
+                                android:paddingHorizontal="@dimen/default_padding"
+                                android:paddingVertical="@dimen/default_padding_half">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="He/she is a barber."
+                                    android:textStyle="italic"/>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="Manunupi siya." />
+
+                            </TableRow>
+
+                            <TableRow
+                                android:background="#F0F7F7"
+                                android:paddingHorizontal="@dimen/default_padding"
+                                android:paddingVertical="@dimen/default_padding_half">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="Siya manunupi." />
+
+                            </TableRow>
+                        </TableLayout>
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/btn_finish"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/default_margin"
+                    android:animateLayoutChanges="true"
+                    android:checkable="true"
+                    android:clickable="true"
+                    android:focusable="true"
+                    app:cardCornerRadius="@dimen/default_card_corner_radius_half"
+                    app:cardElevation="@dimen/default_card_elevation"
+                    app:contentPadding="@dimen/default_padding_half">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Finish Lesson"
+                        android:textAlignment="center"
+                        android:textAppearance="?attr/textAppearanceHeadline6" />
+
+                </com.google.android.material.card.MaterialCardView>
+
+            </LinearLayout>
+        </ScrollView>
+
+    </LinearLayout>
+
+</FrameLayout>
