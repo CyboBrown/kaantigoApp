@@ -15,6 +15,8 @@ import com.cansev.kaantigo_learncebuano.R;
 import com.cansev.kaantigo_learncebuano.database.DatabaseAdapter;
 import com.cansev.kaantigo_learncebuano.database.PreCreateDB;
 import com.cansev.kaantigo_learncebuano.database.Term;
+import com.google.android.material.materialswitch.MaterialSwitch;
+import com.google.android.material.switchmaterial.SwitchMaterial;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -62,6 +64,8 @@ public class SearchTabFragment extends Fragment {
     SearchResultAdapter adapter;
     List<Term> data;
     DatabaseAdapter databaseAdapter;
+    SwitchMaterial swEnglish, swSQL, swPhonetic;
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -82,6 +86,9 @@ public class SearchTabFragment extends Fragment {
         databaseAdapter = new DatabaseAdapter(getContext());
         data = new ArrayList<>();
         searchView = view.findViewById(R.id.searchView);
+        swEnglish = view.findViewById(R.id.switchEnglish);
+        swSQL = view.findViewById(R.id.switchSQL);
+        swPhonetic = view.findViewById(R.id.switchPhonetic);
         rvSearchResults = view.findViewById(R.id.rvSearchResults);
         rvSearchResults.setHasFixedSize(true);
         rvSearchResults.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -91,7 +98,7 @@ public class SearchTabFragment extends Fragment {
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-                data = databaseAdapter.getSearchResults(query);
+                data = databaseAdapter.getSearchResults(query, swEnglish.isChecked(), swSQL.isChecked(), swPhonetic.isChecked());
                 adapter.setData(data);
                 adapter.notifyDataSetChanged();
                 return true;

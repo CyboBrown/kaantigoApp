@@ -54,8 +54,8 @@ public class SearchResultAdapter extends RecyclerView.Adapter<SearchResultAdapte
     @Override
     public void onBindViewHolder(@NonNull SearchResultAdapter.ViewHolder holder, int position) {
         Term term = data.get(position);
-        holder.tvTerm.setText(term.getWritten_form());
-        holder.tvTermDef.setText("(" + term.getWord_ceb() + ")");
+        holder.tvTerm.setText(term.getWritten_form() + " (" + term.getWord_ceb() + ")");
+        holder.tvTermDef.setText(term.getPos());
         holder.tvTermTrans.setText(term.getWord_en());
     }
 

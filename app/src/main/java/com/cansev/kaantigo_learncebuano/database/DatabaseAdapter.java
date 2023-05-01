@@ -23,13 +23,25 @@ public class DatabaseAdapter {
         helper.close();
     }
 
-    public ArrayList<Term> getSearchResults(String searchInput) {
+    public ArrayList<Term> getSearchResults(String searchInput, boolean isEnglish, boolean isSQL, boolean isPhonetic) {
         termList.clear();
         Cursor cursor = null;
+        String searchColumn = DatabaseHelper.KEY_WRITTEN_FORM;
+        String searchCommand = searchInput + "%";
+        if(isEnglish) {
+            searchColumn = DatabaseHelper.KEY_WORD_EN;
+        } else if(isPhonetic) {
+            searchColumn = DatabaseHelper.KEY_WORD_CEB;
+        }
+        if(isSQL) {
+            searchCommand = searchInput;
+        }
         try {
-            cursor = db.query(DatabaseHelper.TABLE_NAME, new String[]{DatabaseHelper.KEY_WORD_CEB, DatabaseHelper.KEY_WRITTEN_FORM, DatabaseHelper.KEY_AFFIXED_FORM, DatabaseHelper.KEY_WORD_EN, DatabaseHelper.KEY_VERB_TYPE},
-                    DatabaseHelper.KEY_WRITTEN_FORM + " LIKE '" + searchInput + "%'", null, null, null, "written_form");
-            System.out.println(cursor);
+            cursor = db.rawQuery("SELECT * FROM (SELECT word_ceb, written_form, affixed_form, word_en, pos FROM ceb_adjectives UNION SELECT word_ceb, written_form, affixed_form, word_en, pos FROM ceb_nouns UNION SELECT word_ceb, written_form, affixed_form, word_en, pos FROM ceb_verbs UNION SELECT word_ceb, written_form, affixed_form, word_en, pos FROM ceb_special) merged_table" +
+                            " WHERE " + searchColumn + " LIKE '" + searchCommand + "' ORDER BY " + searchColumn + " LIMIT 100", new String[]{});
+//            cursor = db.query(DatabaseHelper.TABLE_NAME, new String[]{DatabaseHelper.KEY_WORD_CEB, DatabaseHelper.KEY_WRITTEN_FORM, DatabaseHelper.KEY_AFFIXED_FORM, DatabaseHelper.KEY_WORD_EN, DatabaseHelper.KEY_VERB_TYPE},
+//                    searchColumn + " LIKE '" + searchCommand + "'", null, null, null, searchColumn);
+//            System.out.println(cursor);
             while(cursor.moveToNext()) {
                 int index1 = cursor.getColumnIndex(DatabaseHelper.KEY_WORD_CEB);
                 String word_ceb = cursor.getString(index1);
@@ -39,16 +51,16 @@ public class DatabaseAdapter {
                 String affixed_form = cursor.getString(index3);
                 int index4 = cursor.getColumnIndex(DatabaseHelper.KEY_WORD_EN);
                 String word_en = cursor.getString(index4);
-                int index5 = cursor.getColumnIndex(DatabaseHelper.KEY_VERB_TYPE);
-                String verb_type = cursor.getString(index5);
-                Term term = new Verb(word_ceb, written_form, affixed_form, word_en, verb_type);
+                int index5 = cursor.getColumnIndex(DatabaseHelper.KEY_POS);
+                String pos = cursor.getString(index5);
+                Term term = new Term(word_ceb, written_form, affixed_form, word_en, pos);
                 termList.add(term);
             }
-            for(Term term : termList) {
-                System.out.println(term);
-                System.out.println("***");
-            }
-            System.out.println("___");
+//            for(Term term : termList) {
+//                System.out.println(term);
+//                System.out.println("***");
+//            }
+//            System.out.println("___");
         } catch (SQLiteException e) {
             return termList;
         } finally {
@@ -62,12 +74,16 @@ public class DatabaseAdapter {
     private static class DatabaseHelper extends SQLiteOpenHelper {
 
         private static final String DATABASE_NAME = "kaantigolangdb.db";
-        private static final String TABLE_NAME = "ceb_verbs";
+        private static final String TABLE_ADJECTIVES = "ceb_adjectives";
+        private static final String TABLE_NOUNS = "ceb_nouns";
+        private static final String TABLE_VERBS = "ceb_verbs";
+        private static final String TABLE_SPECIAL = "ceb_special";
         private static final int DATABASE_VERSION = 1;
         private static final String KEY_WORD_CEB = "word_ceb";
         private static final String KEY_WRITTEN_FORM = "written_form";
         private static final String KEY_AFFIXED_FORM = "affixed_form";
         private static final String KEY_WORD_EN = "word_en";
+        private static final String KEY_POS = "pos";
         private static final String KEY_VERB_TYPE = "verb_type";
         private Context context;
 

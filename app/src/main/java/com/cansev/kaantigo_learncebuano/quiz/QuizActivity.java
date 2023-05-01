@@ -29,14 +29,13 @@ public class QuizActivity extends AppCompatActivity {
 
     private static final long COUNTDOWN_IN_MILLIS = 30000;
 
-
     private ColorStateList textColorDefaultCd;
 
     private int currentQuestionPosition = 0;
 
     private String selectedOptionByUser = "";
 
-    private List<QuestionsList> questionsLists;
+    private List<QuestionSet> questionSets;
 
     private ProgressBar progressBar;
     private int progressBarMax;
@@ -73,22 +72,22 @@ public class QuizActivity extends AppCompatActivity {
         timeLeftInMillis = 20000; // 20 seconds
 
         // Get questions list based on selectedTopicName
-        questionsLists = QuestionsBank.getQuestions("caseMarkers");
+        questionSets = QuestionsBank.getQuestions("caseMarkers");
 
 
         progressBar = findViewById(R.id.pb_quiz_active);
-        progressBarMax = questionsLists.size() * 10;
+        progressBarMax = questionSets.size() * 10;
         progressBar.setMax(progressBarMax);
 
         startTimer();
-        description.setText(questionsLists.get(0).getDescription());
-        question.setText(questionsLists.get(0).getQuestion());
-        option1.setText(questionsLists.get(0).getOption1());
-        option2.setText(questionsLists.get(0).getOption2());
-        option3.setText(questionsLists.get(0).getOption3());
-        option4.setText(questionsLists.get(0).getOption4());
-
-        // backBtn
+        description.setText(questionSets.get(0).getDescription());
+        question.setText(questionSets.get(0).getQuestion());
+        if(questionSets.get(0) instanceof MultipleChoice) {
+            option1.setText(((MultipleChoice) questionSets.get(0)).getOption1());
+            option2.setText(((MultipleChoice) questionSets.get(0)).getOption2());
+            option3.setText(((MultipleChoice) questionSets.get(0)).getOption3());
+            option4.setText(((MultipleChoice) questionSets.get(0)).getOption4());
+        }
 
         card_option1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -97,7 +96,7 @@ public class QuizActivity extends AppCompatActivity {
                     selectedOptionByUser = option1.getText().toString();
                     option1.setTextColor(Color.RED);
                     revealAnswer();
-                    questionsLists.get(currentQuestionPosition).setUserSelectedAnswer(selectedOptionByUser);
+                    ((MultipleChoice) questionSets.get(currentQuestionPosition)).setUserSelectedAnswer(selectedOptionByUser);
                 }
             }
         });
@@ -109,7 +108,7 @@ public class QuizActivity extends AppCompatActivity {
                     selectedOptionByUser = option2.getText().toString();
                     option2.setTextColor(Color.RED);
                     revealAnswer();
-                    questionsLists.get(currentQuestionPosition).setUserSelectedAnswer(selectedOptionByUser);
+                    ((MultipleChoice) questionSets.get(currentQuestionPosition)).setUserSelectedAnswer(selectedOptionByUser);
                 }
             }
         });
@@ -121,7 +120,7 @@ public class QuizActivity extends AppCompatActivity {
                     selectedOptionByUser = option3.getText().toString();
                     option3.setTextColor(Color.RED);
                     revealAnswer();
-                    questionsLists.get(currentQuestionPosition).setUserSelectedAnswer(selectedOptionByUser);
+                    ((MultipleChoice) questionSets.get(currentQuestionPosition)).setUserSelectedAnswer(selectedOptionByUser);
                 }
             }
         });
@@ -133,7 +132,7 @@ public class QuizActivity extends AppCompatActivity {
                     selectedOptionByUser = option4.getText().toString();
                     option4.setTextColor(Color.RED);
                     revealAnswer();
-                    questionsLists.get(currentQuestionPosition).setUserSelectedAnswer(selectedOptionByUser);
+                    ((MultipleChoice) questionSets.get(currentQuestionPosition)).setUserSelectedAnswer(selectedOptionByUser);
                 }
             }
         });
@@ -154,11 +153,11 @@ public class QuizActivity extends AppCompatActivity {
         progressBar.setProgress(progressBar.getProgress() + 10);
         currentQuestionPosition++;
 
-        if((currentQuestionPosition+1) == questionsLists.size()) {
+        if((currentQuestionPosition+1) == questionSets.size()) {
             next_btn.setText("Submit");
         }
 
-        if(currentQuestionPosition < questionsLists.size()) {
+        if(currentQuestionPosition < questionSets.size()) {
             selectedOptionByUser = "";
 
             option1.setTextColor(Color.BLACK);
@@ -166,13 +165,14 @@ public class QuizActivity extends AppCompatActivity {
             option3.setTextColor(Color.BLACK);
             option4.setTextColor(Color.BLACK);
 
-            description.setText(questionsLists.get(currentQuestionPosition).getDescription());
-            question.setText(questionsLists.get(currentQuestionPosition).getQuestion());
-            option1.setText(questionsLists.get(currentQuestionPosition).getOption1());
-            option2.setText(questionsLists.get(currentQuestionPosition).getOption2());
-            option3.setText(questionsLists.get(currentQuestionPosition).getOption3());
-            option4.setText(questionsLists.get(currentQuestionPosition).getOption4());
-
+            description.setText(questionSets.get(currentQuestionPosition).getDescription());
+            question.setText(questionSets.get(currentQuestionPosition).getQuestion());
+            if(questionSets.get(currentQuestionPosition) instanceof MultipleChoice) {
+                option1.setText(((MultipleChoice) questionSets.get(currentQuestionPosition)).getOption1());
+                option2.setText(((MultipleChoice) questionSets.get(currentQuestionPosition)).getOption2());
+                option3.setText(((MultipleChoice) questionSets.get(currentQuestionPosition)).getOption3());
+                option4.setText(((MultipleChoice) questionSets.get(currentQuestionPosition)).getOption4());
+            }
         } else {
             submit();
         }
@@ -181,9 +181,9 @@ public class QuizActivity extends AppCompatActivity {
     private int getCorrectAnswers() {
         int correctAnswers = 0;
 
-        for(int i = 0; i < questionsLists.size(); i++) {
-            final String getUserSelectedAnswer = questionsLists.get(i).getUserSelectedAnswer();
-            final String getAnswer = questionsLists.get(i).getAnswer();
+        for(int i = 0; i < questionSets.size(); i++) {
+            final String getUserSelectedAnswer = ((MultipleChoice) questionSets.get(i)).getUserSelectedAnswer();
+            final String getAnswer = questionSets.get(i).getAnswer();
 
             if(getUserSelectedAnswer.equals(getAnswer)) {
                 correctAnswers++;
@@ -196,9 +196,9 @@ public class QuizActivity extends AppCompatActivity {
     private int getInCorrectAnswers() {
         int incorrectAnswers = 0;
 
-        for(int i = 0; i < questionsLists.size(); i++) {
-            final String getUserSelectedAnswer = questionsLists.get(i).getUserSelectedAnswer();
-            final String getAnswer = questionsLists.get(i).getAnswer();
+        for(int i = 0; i < questionSets.size(); i++) {
+            final String getUserSelectedAnswer = ((MultipleChoice) questionSets.get(i)).getUserSelectedAnswer();
+            final String getAnswer = questionSets.get(i).getAnswer();
 
             if(!getUserSelectedAnswer.equals(getAnswer)) {
                 incorrectAnswers++;
@@ -207,14 +207,9 @@ public class QuizActivity extends AppCompatActivity {
 
         return incorrectAnswers;
     }
-//    @Override
-//    public void onBackPressed() {
-//        startActivity(new Intent(QuizActivity.this, QuizActivity.class));
-//        finish();
-//    }
 
     private void revealAnswer() {
-        final String getAnswer = questionsLists.get(currentQuestionPosition).getAnswer();
+        final String getAnswer = questionSets.get(currentQuestionPosition).getAnswer();
 
         if(option1.getText().toString().equals(getAnswer)) {
             option1.setTextColor(Color.GREEN);
