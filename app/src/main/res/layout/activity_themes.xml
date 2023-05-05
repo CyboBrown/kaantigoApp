@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".navigation.Themes">
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/default_title_bar_height"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/default_title_bar_icon_padding"
+            android:src="@drawable/ic_back" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="Themes"
+            android:textAppearance="?attr/textAppearanceHeadline6"
+            android:textSize="@dimen/default_title_bar_font_size"/>
+
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="?android:attr/listDivider"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/relativeLayout2" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/theme1"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:background="@color/darkBlack"
+                android:textColor="@color/white"
+                android:textSize="22sp"
+                android:text="THEME 1"/>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/theme2"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:background="@color/white"
+                android:textColor="@color/black"
+                android:textSize="22sp"
+                android:text="THEME 2"/>
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/theme3"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:background="@color/lightGreenDark"
+                android:textColor="@color/black"
+                android:textSize="22sp"
+                android:text="THEME 3"/>
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

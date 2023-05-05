@@ -1,4 +1,4 @@
-package com.cansev.kaantigo_learncebuano.navigation;
+package com.cansev.kaantigo_learncebuano.lesson;
 
 import android.os.Bundle;
 
@@ -9,13 +9,14 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.cansev.kaantigo_learncebuano.R;
+import com.google.android.material.card.MaterialCardView;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link DemonstrativePronounTableFragment#newInstance} factory method to
+ * Use the {@link LessonFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class DemonstrativePronounTableFragment extends Fragment {
+public class LessonFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -26,7 +27,7 @@ public class DemonstrativePronounTableFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public DemonstrativePronounTableFragment() {
+    public LessonFragment() {
         // Required empty public constructor
     }
 
@@ -36,17 +37,19 @@ public class DemonstrativePronounTableFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment PersonalPronounTableFragment.
+     * @return A new instance of fragment LessonFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static DemonstrativePronounTableFragment newInstance(String param1, String param2) {
-        DemonstrativePronounTableFragment fragment = new DemonstrativePronounTableFragment();
+    public static LessonFragment newInstance(String param1, String param2) {
+        LessonFragment fragment = new LessonFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
         return fragment;
     }
+
+    MaterialCardView btn_finish;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -61,6 +64,12 @@ public class DemonstrativePronounTableFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_demonstrative_pronoun_table, container, false);
+        View view = inflater.inflate(R.layout.fragment_lesson, container, false);
+        btn_finish = view.findViewById(R.id.btn_finish);
+        btn_finish.setOnClickListener(view1 -> {
+            getParentFragmentManager().popBackStack();
+            //TODO: unlock other lesson and quiz
+        });
+        return view;
     }
 }

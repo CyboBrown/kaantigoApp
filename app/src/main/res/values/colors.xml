@@ -11,4 +11,36 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <color name="green_700">#388E3B</color>
+    <color name="green_500">#4CAF50</color>
+    <color name="green_100">#C8E6C9</color>
+    <color name="light_green_700">#689f38</color>
+    <color name="light_green_500">#8bc34a</color>
+    <color name="light_green_100">#dcedc8</color>
+
+    <!-- Customize your theme here. -->
+    <color name="lightBlack">#2d2d30</color>
+    <color name="darkBlack">#252526</color>
+
+    <color name="lightGreenLight">#7CB342</color>
+    <color name="lightGreenDark">#689F38</color>
+
+    <color name="lightBlueLight">#039BE5</color>
+    <color name="lightBlueDark">#0288D1</color>
+
+    <color name="lightCyan">#00ACC1</color>
+    <color name="darkCyan">#0097A7</color>
+
+    <color name="lightGreen">#388E3C</color>
+    <color name="darkGreen">#2E7D32</color>
+
+    <color name="lightRed">#D32F2F</color>
+    <color name="darkRed">#C62828</color>
+
+    <color name="lightBlue">#1976D2</color>
+    <color name="darkBlue">#1565C0</color>
+
+    <color name="lightBrown">#6D4C41</color>
+    <color name="darkBrown">#5D4037</color>
 </resources>

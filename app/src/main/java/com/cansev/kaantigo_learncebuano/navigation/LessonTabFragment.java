@@ -18,46 +18,16 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 
-import com.cansev.kaantigo_learncebuano.LessonFragment;
+import com.cansev.kaantigo_learncebuano.lesson.LessonFragment;
 import com.cansev.kaantigo_learncebuano.R;
+import com.cansev.kaantigo_learncebuano.lesson.DemonstrativePronounTableFragment;
+import com.cansev.kaantigo_learncebuano.lesson.PersonalPronounTableFragment;
 import com.google.android.material.chip.Chip;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link LessonTabFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class LessonTabFragment extends Fragment implements View.OnClickListener {
-
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
 
     public LessonTabFragment() {
         // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment LessonTabFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static LessonTabFragment newInstance(String param1, String param2) {
-        LessonTabFragment fragment = new LessonTabFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
     }
 
     CardView card_lesson1;
@@ -68,11 +38,6 @@ public class LessonTabFragment extends Fragment implements View.OnClickListener 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-
     }
 
     @Override
@@ -84,7 +49,7 @@ public class LessonTabFragment extends Fragment implements View.OnClickListener 
         card_lesson1 = view.findViewById(R.id.card_flashcards);
         chip_personal_pronouns = view.findViewById(R.id.chip_personal_pronouns);
         chip_demonstrative_pronouns = view.findViewById(R.id.chip_demonstrative_pronouns);
-        btn_basic1 = view.findViewById(R.id.btn_basic1);
+        btn_basic1 = view.findViewById(R.id.btn_pref_themes);
 
         card_lesson1.setOnClickListener(this);
         chip_personal_pronouns.setOnClickListener(this);
@@ -120,7 +85,7 @@ public class LessonTabFragment extends Fragment implements View.OnClickListener 
             case R.id.chip_demonstrative_pronouns:
                 getParentFragmentManager().beginTransaction().replace(R.id.container, new DemonstrativePronounTableFragment()).addToBackStack(null).commit();
                 break;
-            case R.id.btn_basic1:
+            case R.id.btn_pref_themes:
                 getParentFragmentManager().beginTransaction().replace(R.id.container, new LessonFragment()).addToBackStack(null).commit();
                 break;
         }

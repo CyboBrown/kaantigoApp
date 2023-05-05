@@ -42,4 +42,6 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
 
     implementation 'com.wajahatkarim:EasyFlipView:3.0.3'
+    implementation "com.dolatkia:animated-theme-manager:1.1.4"
+
 }

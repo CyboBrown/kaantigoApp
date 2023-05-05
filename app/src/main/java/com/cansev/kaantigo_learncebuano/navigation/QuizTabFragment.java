@@ -22,42 +22,11 @@ import android.widget.ProgressBar;
 import com.cansev.kaantigo_learncebuano.R;
 import com.cansev.kaantigo_learncebuano.quiz.QuizActivity;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link QuizTabFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class QuizTabFragment extends Fragment implements View.OnClickListener  {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
 
     public QuizTabFragment() {
         // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment QuizTabFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static QuizTabFragment newInstance(String param1, String param2) {
-        QuizTabFragment fragment = new QuizTabFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
     }
 
     CardView card_quiz1;
@@ -73,11 +42,6 @@ public class QuizTabFragment extends Fragment implements View.OnClickListener  {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-
     }
 
     @Override
@@ -86,9 +50,9 @@ public class QuizTabFragment extends Fragment implements View.OnClickListener  {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_quiz_tab, container, false);
 
-        btn1 = view.findViewById(R.id.btn_basic1);
-        btn2 = view.findViewById(R.id.btn_basic2);
-        btn3 = view.findViewById(R.id.btn_basic3);
+        btn1 = view.findViewById(R.id.btn_pref_themes);
+        btn2 = view.findViewById(R.id.btn_pref_achievements);
+        btn3 = view.findViewById(R.id.btn_pref_notifications);
 
         btn1.setOnClickListener(view1 -> {
             Intent intent1 = new Intent(getActivity(), QuizActivity.class);
@@ -125,12 +89,11 @@ public class QuizTabFragment extends Fragment implements View.OnClickListener  {
 
     @Override
     public void onClick(View view) {
-        System.out.println("Clicked");
         switch (view.getId()) {
             case R.id.card_quiz1:
                 cardop_quiz1 = view.findViewById(R.id.cardop_lesson1);
                 expand_card = view.findViewById(R.id.expand_card);
-                btn1 = btn1.findViewById(R.id.btn_basic1);
+                btn1 = btn1.findViewById(R.id.btn_pref_themes);
 //                TransitionManager.beginDelayedTransition(card_lesson1, new AutoTransition());
                 if (cardop_quiz1.getVisibility() == View.GONE) {
                     TransitionManager.beginDelayedTransition(card_quiz1, new AutoTransition());

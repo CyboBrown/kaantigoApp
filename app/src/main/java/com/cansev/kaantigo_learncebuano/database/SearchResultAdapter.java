@@ -1,5 +1,7 @@
-package com.cansev.kaantigo_learncebuano.navigation;
+package com.cansev.kaantigo_learncebuano.database;
 
+import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,16 +11,14 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.cansev.kaantigo_learncebuano.R;
-import com.cansev.kaantigo_learncebuano.database.Term;
 
 import java.util.List;
 
 public class SearchResultAdapter extends RecyclerView.Adapter<SearchResultAdapter.ViewHolder> {
 
-//    Context context;
-//    ArrayList<Term> termList;
-//    RecyclerView rvSearchResults;
-//    final View.OnClickListener onClickListener = new SearchResultAdapter.MyOnClickListener();
+    Context context;
+    RecyclerView rvSearchResults;
+    final View.OnClickListener onClickListener = new SearchResultAdapter.MyOnClickListener();
     private List<Term> data;
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
@@ -33,10 +33,9 @@ public class SearchResultAdapter extends RecyclerView.Adapter<SearchResultAdapte
         }
     }
 
-    public SearchResultAdapter() {
-//        this.context = context;
-//        this.termList = termList;
-//        this.rvSearchResults = rvSearchResults;
+    public SearchResultAdapter(Context context, RecyclerView rvSearchResults) {
+        this.context = context;
+        this.rvSearchResults = rvSearchResults;
     }
 
     public void setData(List<Term> newData) {
@@ -47,7 +46,7 @@ public class SearchResultAdapter extends RecyclerView.Adapter<SearchResultAdapte
     @Override
     public SearchResultAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.search_item, parent, false);
-//        itemView.setOnClickListener(onClickListener);
+        itemView.setOnClickListener(onClickListener);
         return new SearchResultAdapter.ViewHolder(itemView);
     }
 
@@ -64,12 +63,15 @@ public class SearchResultAdapter extends RecyclerView.Adapter<SearchResultAdapte
         return data != null ? data.size() : 0;
     }
 
-//    private class MyOnClickListener implements View.OnClickListener {
-//        @Override
-//        public void onClick(View view) {
-//            int itemPosition = rvTerms.getChildLayoutPosition(view);
-//            Term termSelected = termList.get(itemPosition);
-//
-//        }
-//    }
+    private class MyOnClickListener implements View.OnClickListener {
+        @Override
+        public void onClick(View view) {
+            int itemPosition = rvSearchResults.getChildLayoutPosition(view);
+            Term termSelected = data.get(itemPosition);
+            Intent intent = new Intent(context, TermDetail.class);
+            intent.putExtra("termSelected", termSelected);
+            intent.putExtra("itemPosition", itemPosition);
+            context.startActivity(intent);
+        }
+    }
 }
