@@ -10,13 +10,15 @@ public class Term implements Serializable {
     private String affixed_form;
     private String word_en;
     private String pos;
+    private String category;
 
-    public Term(String word_ceb, String written_form, String affixed_form, String word_en, String pos) {
+    public Term(String word_ceb, String written_form, String affixed_form, String word_en, String pos, String category) {
         this.word_ceb = word_ceb;
         this.written_form = written_form;
         this.affixed_form = affixed_form;
         this.word_en = word_en;
         this.pos = pos;
+        this.category = category;
     }
 
     public String getWord_ceb() {
@@ -39,6 +41,10 @@ public class Term implements Serializable {
         return pos;
     }
 
+    public String getCategory() {
+        return category;
+    }
+
     @NonNull
     @Override
     public String toString() {
@@ -46,38 +52,45 @@ public class Term implements Serializable {
     }
 }
 
-class Verb extends Term {
-    private String verb_type;
+//class Verb extends Term {
+//
+//    private String verb_type;
+//
+//    public Verb(String word_ceb, String written_form, String affixed_form, String word_en, String pos, String verb_type) {
+//        super(word_ceb, written_form, affixed_form, word_en, pos);
+//        this.verb_type = verb_type;
+//    }
+//
+//    public String getVerb_type() {
+//        return verb_type;
+//    }
+//}
 
-    public Verb(String word_ceb, String written_form, String affixed_form, String word_en, String pos, String verb_type) {
-        super(word_ceb, written_form, affixed_form, word_en, pos);
-        this.verb_type = verb_type;
-    }
-}
+//class Noun extends Term {
+//
+//}
+//
+//class Adjective extends Term {
+//
+//}
+//
+//class Special extends Term {
+//
+//}
 
-class Noun extends Term {
-    private String category;
-
-    public Noun(String word_ceb, String written_form, String affixed_form, String word_en, String pos, String category) {
-        super(word_ceb, written_form, affixed_form, word_en, pos);
-        this.category = category;
-    }
-}
-
-class Adjective extends Term {
-    private String category;
-
-    public Adjective(String word_ceb, String written_form, String affixed_form, String word_en, String pos, String category) {
-        super(word_ceb, written_form, affixed_form, word_en, pos);
-        this.category = category;
-    }
-}
-
-class Special extends Term {
-    private String alternative;
-
-    public Special(String word_ceb, String written_form, String affixed_form, String word_en, String pos, String alternative) {
-        super(word_ceb, written_form, affixed_form, word_en, pos);
-        this.alternative = alternative;
-    }
-}
+//interface Conjugatable {
+//    // TRIGGERS
+//    int TRGR_AGENT = 0;
+//    int TRGR_PATIENT = 1;
+//    int TRGR_CIRCUMSTANTIAL = 2;
+//    int TRGR_INSTRUMENTAL = 3;
+//    // MOODS
+//    int MOOD_PUNCTUAL = 0;
+//    int MOOD_DURATIVE = 1;
+//    int MOOD_POTENTIAL = 2;
+//    // ASPECTS
+//    int ASPT_ACTUAL = 0;
+//    int ASPT_CONTINGENT = 1;
+//    int ASPT_ADVERBIAL = 2;
+//    int ASPT_IMPERATIVE = 3;
+//}
