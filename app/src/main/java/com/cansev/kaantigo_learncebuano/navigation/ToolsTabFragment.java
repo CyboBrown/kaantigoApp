@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.cansev.kaantigo_learncebuano.R;
+import com.cansev.kaantigo_learncebuano.SentenceConstructorActivity;
 import com.cansev.kaantigo_learncebuano.flashcard.FlashcardsActivity;
 
 public class ToolsTabFragment extends Fragment implements View.OnClickListener {
@@ -20,7 +21,7 @@ public class ToolsTabFragment extends Fragment implements View.OnClickListener {
         // Required empty public constructor
     }
 
-    CardView card_flashcards;
+    CardView card_flashcards, card_sentence_constructor;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -36,19 +37,24 @@ public class ToolsTabFragment extends Fragment implements View.OnClickListener {
         card_flashcards = view.findViewById(R.id.card_flashcards);
         card_flashcards.setOnClickListener(this);
         card_flashcards.getLayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
+        card_sentence_constructor = view.findViewById(R.id.card_sentence_constructor);
+        card_sentence_constructor.setOnClickListener(this);
+        card_sentence_constructor.getLayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
+
         return view;
     }
 
     @Override
     public void onClick(View view) {
         System.out.println("Clicked");
+        Intent intent;
         switch (view.getId()) {
             case R.id.card_flashcards:
-                Intent intent = new Intent(getActivity(), FlashcardsActivity.class);
+                intent = new Intent(getActivity(), FlashcardsActivity.class);
                 startActivity(intent);
-//            case R.id.card_sentence_constructor:
-//                Intent intent = new Intent(getActivity(), SentenceConstructorActivity.class);
-//                startActivity(intent);
+            case R.id.card_sentence_constructor:
+                intent = new Intent(getActivity(), SentenceConstructorActivity.class);
+                startActivity(intent);
         }
     }
 }

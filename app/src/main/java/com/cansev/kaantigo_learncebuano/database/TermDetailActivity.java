@@ -13,7 +13,7 @@ import com.cansev.kaantigo_learncebuano.R;
 
 import java.util.Objects;
 
-public class TermDetail extends AppCompatActivity {
+public class TermDetailActivity extends AppCompatActivity {
 
     Term termSelected;
     int itemPosition;
@@ -40,7 +40,7 @@ public class TermDetail extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.term_detail);
+        setContentView(R.layout.activity_term_detail);
         termSelected = (Term) getIntent().getSerializableExtra("termSelected");
         itemPosition = getIntent().getIntExtra("itemPosition", 1);
 
@@ -80,8 +80,10 @@ public class TermDetail extends AppCompatActivity {
 
         if(Objects.equals(pos, "verb")) {
             String verb_type = termSelected.getCategory();
+            tvR0C2.setText("Actual");
+            aspectPrev.setEnabled(false);
+            aspectPrev.setVisibility(View.INVISIBLE);
             if(Objects.equals(verb_type, "stative")) {
-                tvR0C2.setText("Actual");
                 tvR1C2.setText("na" + written_form);
                 tvR2C2.setText("-");
                 tvR3C2.setText("-");
@@ -95,7 +97,6 @@ public class TermDetail extends AppCompatActivity {
                 tvR11C2.setText("-");
                 tvR12C2.setText("-");
             } else if(Objects.equals(verb_type, "distributive")) {
-                tvR0C2.setText("Actual");
                 tvR1C2.setText("n" + written_form.substring(1));
                 tvR2C2.setText("nag" + written_form);
                 tvR3C2.setText("naka" + written_form);
@@ -109,7 +110,6 @@ public class TermDetail extends AppCompatActivity {
                 tvR11C2.setText("gina" + written_form);
                 tvR12C2.setText("na" + written_form);
             } else {
-                tvR0C2.setText("Actual");
                 tvR1C2.setText("mi" + written_form);
                 tvR2C2.setText("nag" + written_form);
                 tvR3C2.setText("naka" + written_form);

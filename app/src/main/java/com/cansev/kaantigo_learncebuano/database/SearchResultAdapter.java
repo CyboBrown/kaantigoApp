@@ -68,7 +68,7 @@ public class SearchResultAdapter extends RecyclerView.Adapter<SearchResultAdapte
         public void onClick(View view) {
             int itemPosition = rvSearchResults.getChildLayoutPosition(view);
             Term termSelected = data.get(itemPosition);
-            Intent intent = new Intent(context, TermDetail.class);
+            Intent intent = new Intent(context, TermDetailActivity.class);
             intent.putExtra("termSelected", termSelected);
             intent.putExtra("itemPosition", itemPosition);
             context.startActivity(intent);

@@ -21,4 +21,5 @@
     <dimen name="default_lesson_title_font_size">24sp</dimen>
     <dimen name="default_lesson_body_font_size">16sp</dimen>
     <dimen name="default_lesson_item_font_size">16sp</dimen>
+<!--    <dimen name="default_button_font_size">20sp</dimen>-->
 </resources>

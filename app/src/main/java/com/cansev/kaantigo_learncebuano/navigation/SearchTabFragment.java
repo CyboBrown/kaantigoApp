@@ -70,8 +70,11 @@ public class SearchTabFragment extends Fragment {
             public boolean onQueryTextChange(String newText) {
                 if (newText.isEmpty()) {
                     data.clear();
-                    adapter.notifyDataSetChanged();
+                } else {
+                    data = databaseAdapter.getSearchResults(newText, swEnglish.isChecked(), swSQL.isChecked(), swPhonetic.isChecked());
+                    adapter.setData(data);
                 }
+                adapter.notifyDataSetChanged();
                 return true;
             }
         });

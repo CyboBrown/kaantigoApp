@@ -52,19 +52,12 @@ public class Term implements Serializable {
     }
 }
 
-//class Verb extends Term {
-//
-//    private String verb_type;
-//
-//    public Verb(String word_ceb, String written_form, String affixed_form, String word_en, String pos, String verb_type) {
-//        super(word_ceb, written_form, affixed_form, word_en, pos);
-//        this.verb_type = verb_type;
-//    }
-//
-//    public String getVerb_type() {
-//        return verb_type;
-//    }
-//}
+class Verb extends Term {
+
+    public Verb(String word_ceb, String written_form, String affixed_form, String word_en, String category) {
+        super(word_ceb, written_form, affixed_form, word_en, "verb", category);
+    }
+}
 
 //class Noun extends Term {
 //
