@@ -73,6 +73,86 @@ public class DatabaseAdapter {
         return termList;
     }
 
+    public Verb getVerb(String searchInput, boolean isEnglish) {
+        Verb verb = null;
+        Cursor cursor = null;
+        String searchColumn = DatabaseHelper.KEY_WRITTEN_FORM;
+        String searchCommand = searchInput;
+        if(isEnglish) {
+            searchColumn = DatabaseHelper.KEY_WORD_EN;
+        }
+        try {
+            cursor = db.rawQuery("SELECT * FROM ceb_verbs" +
+                    " WHERE " + searchColumn + " LIKE '" + searchCommand + "' ORDER BY " + searchColumn + " LIMIT 1", new String[]{});
+            if(cursor.moveToNext()) {
+                int index1 = cursor.getColumnIndex(DatabaseHelper.KEY_WORD_CEB);
+                String word_ceb = cursor.getString(index1);
+                int index2 = cursor.getColumnIndex(DatabaseHelper.KEY_WRITTEN_FORM);
+                String written_form = cursor.getString(index2);
+                int index3 = cursor.getColumnIndex(DatabaseHelper.KEY_AFFIXED_FORM);
+                String affixed_form = cursor.getString(index3);
+                int index4 = cursor.getColumnIndex(DatabaseHelper.KEY_WORD_EN);
+                String word_en = cursor.getString(index4);
+                int index6 = cursor.getColumnIndex(DatabaseHelper.KEY_CATEGORY);
+                String category = cursor.getString(index6);
+                System.out.println(written_form + " " + word_en);
+                verb = new Verb(word_ceb, written_form, affixed_form, word_en, category);
+            } else {
+                if(!isEnglish) {
+                    verb = new Verb(searchInput, searchInput, "");
+                } else {
+                    switch (searchInput) {
+                        case " ":
+                            verb = new Verb("kuan", "kuan", "*");
+                            break;
+                        case "do":
+                            verb = new Verb("buhat", "buhat", "*");
+                            break;
+                        case "make":
+                            verb = new Verb("himo", "himo", "*");
+                            break;
+                        case "put":
+                            verb = new Verb("butang", "butng", "*");
+                            break;
+                        case "write":
+                            verb = new Verb("sulat", "sulat", "*");
+                            break;
+                        default:
+                            verb = new Verb("-" + searchInput, "-" + searchInput + "-", "*");
+                            break;
+                    }
+                }
+            }
+        } catch (SQLiteException e) {
+            return verb;
+        } finally {
+            if(cursor != null) {
+                cursor.close();
+            }
+        }
+        return verb;
+    }
+
+    public Term getNoun(String searchInput) {
+        Term term = null;
+        String searchColumn = DatabaseHelper.KEY_WORD_EN;
+        try (Cursor cursor = db.rawQuery("SELECT * FROM ceb_nouns" +
+                " WHERE " + searchColumn + " LIKE '" + searchInput + "' ORDER BY " + searchColumn + " LIMIT 1", new String[]{})) {
+            if (cursor.moveToNext()) {
+                int index2 = cursor.getColumnIndex(DatabaseHelper.KEY_WRITTEN_FORM);
+                String written_form = cursor.getString(index2);
+                int index4 = cursor.getColumnIndex(DatabaseHelper.KEY_WORD_EN);
+                String word_en = cursor.getString(index4);
+                term = new Term(written_form, word_en);
+            } else {
+                term = new Term(searchInput, searchInput);
+            }
+        } catch (SQLiteException e) {
+            return term;
+        }
+        return term;
+    }
+
     private static class DatabaseHelper extends SQLiteOpenHelper {
 
         private static final String DATABASE_NAME = "kaantigolangdb.db";

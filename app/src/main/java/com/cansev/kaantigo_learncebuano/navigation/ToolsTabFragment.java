@@ -52,9 +52,11 @@ public class ToolsTabFragment extends Fragment implements View.OnClickListener {
             case R.id.card_flashcards:
                 intent = new Intent(getActivity(), FlashcardsActivity.class);
                 startActivity(intent);
+                break;
             case R.id.card_sentence_constructor:
                 intent = new Intent(getActivity(), SentenceConstructorActivity.class);
                 startActivity(intent);
+                break;
         }
     }
 }

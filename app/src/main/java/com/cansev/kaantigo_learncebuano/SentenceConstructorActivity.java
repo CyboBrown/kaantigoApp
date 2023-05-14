@@ -1,6 +1,8 @@
 package com.cansev.kaantigo_learncebuano;
 
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -10,12 +12,18 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.android.material.card.MaterialCardView;
+import com.cansev.kaantigo_learncebuano.database.DatabaseAdapter;
+import com.cansev.kaantigo_learncebuano.database.Term;
+import com.cansev.kaantigo_learncebuano.database.Verb;
 
-public class SentenceConstructorActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+import java.util.ArrayList;
+
+public class SentenceConstructorActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener, TextWatcher {
 
     TextView txtResult;
-    boolean isGeneral, isCebuano;
+    Verb verb;
+    String action, doer, receiver, goal, instrument;
+    boolean isGeneralDoer, isGeneralReceiver, isGeneralGoal, isGeneralInstrument, isCebuano;
     Spinner spnAction, spnFocus, spnAspect, spnDoer, spnReceiver, spnGoal, spnInstrument;
     String selectedAction, selectedFocus, selectedAspect, selectedDoer, selectedReceiver, selectedGoal, selectedInstrument;
     ArrayAdapter<String> adapter_action, adapter_focus, adapter_aspect, adapter_doer, adapter_receiver, adapter_goal, adapter_instrument;
@@ -23,7 +31,7 @@ public class SentenceConstructorActivity extends AppCompatActivity implements Ad
     Spinner spnAction0, spnDoer0, spnReceiver0, spnGoal0, spnInstrument0;
     String selectedAction0, selectedDoer0, selectedReceiver0, selectedGoal0, selectedInstrument0, selectedPronoun;
     ArrayAdapter<String> adapter_action0, adapter_doer0, adapter_receiver0, adapter_goal0, adapter_instrument0, adapter_pronoun;
-
+    DatabaseAdapter databaseAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,11 +68,11 @@ public class SentenceConstructorActivity extends AppCompatActivity implements Ad
         String[] optionsGoal = {"Default", "Pronoun", "Custom (Person)", "Custom (General)"};
         String[] optionsInstrument = {"Default", "Pronoun", "Custom (Person)", "Custom (General)"};
 
-        String[] optionsAction0 = {" ", "do", "drink", "eat", "give", "make", "write"};
-        String[] optionsDoer0 = {" ", "Maria", "Juan", "dog", "teacher"};
-        String[] optionsReceiver0 = {" ", "Maria", "Juan", "food", "water"};
-        String[] optionsGoal0 = {" ", "Maria", "Juan", "beach", "house"};
-        String[] optionsInstrument0 = {" ", "Maria", "Juan", "pen", "hand"};
+        String[] optionsAction0 = {" ", "ask", "do", "drink", "eat", "give", "make", "put", "take", "write"};
+        String[] optionsDoer0 = {" ", "Maria", "Juan", "man, boy", "woman, girl", "dog", "cat", "teacher", "student"};
+        String[] optionsReceiver0 = {" ", "Maria", "Juan", "man, boy", "woman, girl", "food", "water"};
+        String[] optionsGoal0 = {" ", "Maria", "Juan", "man, boy", "woman, girl", "road, street, way, path, trail", "house"};
+        String[] optionsInstrument0 = {" ", "Maria", "Juan", "man, boy", "woman, girl", "fire", "hand", "water"};
         String[] optionsPronoun = {"I", "we (singular)", "we (plural)", "you (singular)", "you (plural)", "he, she", "they", "this (temporal)", "this (proximal)", "this (medioproximal)", "that (medial)", "that (distal)"};
 
         adapter_action = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, optionsAction);
@@ -141,14 +149,17 @@ public class SentenceConstructorActivity extends AppCompatActivity implements Ad
 
         adapter_pronoun = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, optionsPronoun);
         adapter_pronoun.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        databaseAdapter = new DatabaseAdapter(this);
+
+        tfAction.addTextChangedListener(this);
     }
 
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) {
-        isGeneral = true;
-        isCebuano = true;
         switch (adapterView.getId()) {
             case R.id.spnAction:
+                isCebuano = false;
                 selectedAction = adapterView.getItemAtPosition(position).toString();
                 switch (selectedAction) {
                     case "Default":
@@ -156,8 +167,11 @@ public class SentenceConstructorActivity extends AppCompatActivity implements Ad
                         tfAction.setVisibility(View.INVISIBLE);
                         break;
                     case "Custom (English)":
-                        isCebuano = false;
+                        spnAction0.setVisibility(View.GONE);
+                        tfAction.setVisibility(View.VISIBLE);
+                        break;
                     case "Custom (Cebuano)":
+                        isCebuano = true;
                         spnAction0.setVisibility(View.GONE);
                         tfAction.setVisibility(View.VISIBLE);
                         break;
@@ -170,6 +184,7 @@ public class SentenceConstructorActivity extends AppCompatActivity implements Ad
                 selectedAspect = adapterView.getItemAtPosition(position).toString();
                 break;
             case R.id.spnDoer:
+                isGeneralDoer = true;
                 selectedDoer = adapterView.getItemAtPosition(position).toString();
                 switch (selectedDoer) {
                     case "Default":
@@ -185,7 +200,7 @@ public class SentenceConstructorActivity extends AppCompatActivity implements Ad
                         spnDoer0.setSelection(0);
                         break;
                     case "Custom (Person)":
-                        isGeneral = false;
+                        isGeneralDoer = false;
                     case "Custom (General)":
                         spnDoer0.setVisibility(View.GONE);
                         tfDoer.setVisibility(View.VISIBLE);
@@ -193,6 +208,7 @@ public class SentenceConstructorActivity extends AppCompatActivity implements Ad
                 }
                 break;
             case R.id.spnReceiver:
+                isGeneralReceiver = true;
                 selectedReceiver = adapterView.getItemAtPosition(position).toString();
                 switch (selectedReceiver) {
                     case "Default":
@@ -208,7 +224,7 @@ public class SentenceConstructorActivity extends AppCompatActivity implements Ad
                         spnReceiver0.setSelection(0);
                         break;
                     case "Custom (Person)":
-                        isGeneral = false;
+                        isGeneralReceiver = false;
                     case "Custom (General)":
                         spnReceiver0.setVisibility(View.GONE);
                         tfReceiver.setVisibility(View.VISIBLE);
@@ -216,6 +232,7 @@ public class SentenceConstructorActivity extends AppCompatActivity implements Ad
                 }
                 break;
             case R.id.spnGoal:
+                isGeneralGoal = true;
                 selectedGoal = adapterView.getItemAtPosition(position).toString();
                 switch (selectedGoal) {
                     case "Default":
@@ -231,7 +248,7 @@ public class SentenceConstructorActivity extends AppCompatActivity implements Ad
                         spnGoal0.setSelection(0);
                         break;
                     case "Custom (Person)":
-                        isGeneral = false;
+                        isGeneralGoal = false;
                     case "Custom (General)":
                         spnGoal0.setVisibility(View.GONE);
                         tfGoal.setVisibility(View.VISIBLE);
@@ -239,6 +256,7 @@ public class SentenceConstructorActivity extends AppCompatActivity implements Ad
                 }
                 break;
             case R.id.spnInstrument:
+                isGeneralInstrument = true;
                 selectedInstrument = adapterView.getItemAtPosition(position).toString();
                 switch (selectedInstrument) {
                     case "Default":
@@ -254,19 +272,123 @@ public class SentenceConstructorActivity extends AppCompatActivity implements Ad
                         spnInstrument0.setSelection(0);
                         break;
                     case "Custom (Person)":
-                        isGeneral = false;
+                        isGeneralInstrument = false;
                     case "Custom (General)":
                         spnInstrument0.setVisibility(View.GONE);
                         tfInstrument.setVisibility(View.VISIBLE);
                         break;
                 }
                 break;
+            case R.id.spnAction0:
+                selectedAction0 = adapterView.getItemAtPosition(position).toString();
+                action = selectedAction0;
+                break;
+            case R.id.spnDoer0:
+                selectedDoer0 = adapterView.getItemAtPosition(position).toString();
+                switch (selectedDoer0) {
+                    case "Maria":
+                    case "Juan":
+                        isGeneralDoer = false;
+                        break;
+                    case "man, boy":
+                    case "woman, girl":
+                    case "dog":
+                    case "cat":
+                    case "teacher":
+                    case "student":
+                        isGeneralDoer = true;
+                        break;
+                }
+                break;
+            case R.id.spnReceiver0:
+                selectedReceiver0 = adapterView.getItemAtPosition(position).toString();
+                switch (selectedReceiver0) {
+                    case "Maria":
+                    case "Juan":
+                        isGeneralReceiver = false;
+                        break;
+                    case "man, boy":
+                    case "woman, girl":
+                    case "food":
+                    case "water":
+                        isGeneralReceiver = true;
+                        break;
+                }
+                break;
+            case R.id.spnGoal0:
+                selectedGoal0 = adapterView.getItemAtPosition(position).toString();
+                switch (selectedGoal0) {
+                    case "Maria":
+                    case "Juan":
+                        isGeneralGoal = false;
+                        break;
+                    case "man, boy":
+                    case "woman, girl":
+                    case "road, street, way, path, trail":
+                    case "house":
+                        isGeneralGoal = true;
+                        break;
+                }
+                break;
+            case R.id.spnInstrument0:
+                selectedInstrument0 = adapterView.getItemAtPosition(position).toString();
+                switch (selectedInstrument0) {
+                    case "Maria":
+                    case "Juan":
+                        isGeneralInstrument = false;
+                        break;
+                    case "man, boy":
+                    case "woman, girl":
+                    case "fire":
+                    case "hand":
+                    case "water":
+                        isGeneralInstrument = true;
+                        break;
+                }
+                break;
         }
-        txtResult.setText(selectedAction + ", " + selectedFocus + ", " + selectedAspect + ", " + selectedDoer + ", " + selectedReceiver + ", " + selectedGoal + ", " + selectedInstrument);
+        Sentence sentence;
+        try {
+            verb = databaseAdapter.getVerb(action, !isCebuano);
+            doer = databaseAdapter.getNoun(selectedDoer0).getWritten_form();
+            receiver = databaseAdapter.getNoun(selectedReceiver0).getWritten_form();
+            goal = databaseAdapter.getNoun(selectedGoal0).getWritten_form();
+            instrument = databaseAdapter.getNoun(selectedInstrument0).getWritten_form();
+        } catch(Exception ignored) {}
+        try {
+            sentence = new Sentence(verb, selectedFocus, selectedAspect, doer, receiver, goal, instrument, isGeneralDoer, isGeneralReceiver, isGeneralGoal, isGeneralInstrument);
+            txtResult.setText(sentence.toString());
+        } catch (Exception ignored) {}
     }
 
     @Override
     public void onNothingSelected(AdapterView<?> adapterView) {
+
+    }
+
+    @Override
+    public void beforeTextChanged(CharSequence charSequence, int start, int count, int after) {
+
+    }
+
+    @Override
+    public void onTextChanged(CharSequence charSequence, int start, int before, int count) {
+        action = charSequence.toString();
+        if(action.equals("") || action.equals(" ")) {
+            verb = new Verb("kuan", "kuan", "*");
+        } else {
+            verb = databaseAdapter.getVerb(action, !isCebuano);
+        }
+        try {
+            Sentence sentence = new Sentence(verb, selectedFocus, selectedAspect, doer, receiver, goal, instrument, isGeneralDoer, isGeneralReceiver, isGeneralGoal, isGeneralInstrument);
+            txtResult.setText(sentence.toString());
+        } catch (Exception ignored) {
+
+        }
+    }
+
+    @Override
+    public void afterTextChanged(Editable editable) {
 
     }
 }

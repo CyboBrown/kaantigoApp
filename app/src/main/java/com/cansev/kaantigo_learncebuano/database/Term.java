@@ -3,6 +3,7 @@ package com.cansev.kaantigo_learncebuano.database;
 import androidx.annotation.NonNull;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 public class Term implements Serializable {
     private String word_ceb;
@@ -11,6 +12,11 @@ public class Term implements Serializable {
     private String word_en;
     private String pos;
     private String category;
+
+    public Term(String written_form, String word_en) {
+        this.written_form = written_form;
+        this.word_en = word_en;
+    }
 
     public Term(String word_ceb, String written_form, String affixed_form, String word_en, String pos, String category) {
         this.word_ceb = word_ceb;
@@ -49,13 +55,6 @@ public class Term implements Serializable {
     @Override
     public String toString() {
         return word_ceb + " " + written_form + " " + affixed_form;
-    }
-}
-
-class Verb extends Term {
-
-    public Verb(String word_ceb, String written_form, String affixed_form, String word_en, String category) {
-        super(word_ceb, written_form, affixed_form, word_en, "verb", category);
     }
 }
 
