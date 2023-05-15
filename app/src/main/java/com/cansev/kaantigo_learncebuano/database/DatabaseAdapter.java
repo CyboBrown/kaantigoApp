@@ -6,6 +6,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import com.cansev.kaantigo_learncebuano.flashcard.Flashcard;
+
 import java.util.ArrayList;
 
 public class DatabaseAdapter {
@@ -151,6 +153,23 @@ public class DatabaseAdapter {
             return term;
         }
         return term;
+    }
+
+    public ArrayList<Flashcard> getFlashcards() {
+        ArrayList<Flashcard> flashcards = new ArrayList<>();
+        try (Cursor cursor = db.rawQuery("SELECT * FROM ceb_nouns", new String[]{})) {
+            while (cursor.moveToNext()) {
+                int index2 = cursor.getColumnIndex(DatabaseHelper.KEY_WRITTEN_FORM);
+                String written_form = cursor.getString(index2);
+                int index4 = cursor.getColumnIndex(DatabaseHelper.KEY_WORD_EN);
+                String word_en = cursor.getString(index4);
+                Flashcard f = new Flashcard(written_form, word_en);
+                flashcards.add(f);
+            }
+        } catch (SQLiteException e) {
+            return flashcards;
+        }
+        return flashcards;
     }
 
     private static class DatabaseHelper extends SQLiteOpenHelper {

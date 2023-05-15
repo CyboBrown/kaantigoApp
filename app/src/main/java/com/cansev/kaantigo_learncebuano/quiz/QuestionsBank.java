@@ -8,16 +8,18 @@ public class QuestionsBank {
         List<QuestionSet> questionSets = new ArrayList<>();
 
         // Create object and pass a question with options, and answer
-        QuestionSet question1 = new MultipleChoice("description 1 for case markers","I bought a new house.", "Mipalit ko sa bag-o nga balay.", "Mopalit ko og bag-o nga balay.", "Mopalit ko sa bag-o nga balay.", "Mipalit ko og bag-o nga balay.", "Mipalit ko og bag-o nga balay.", "");
-        QuestionSet question2 = new MultipleChoice("description 2 for case markers","What's Curry's college team?", "Davidson Wildcats", "Texas Longhorns", "Gonzaga Bulldogs", "Wisconsin Badgers", "Davidson Wildcats", "");
-        QuestionSet question3 = new MultipleChoice("description 3 for case markers","Which team picked Curry in the 2009 NBA draft?", "San Antonio Spurs", "New York Knicks", "Los Angeles Clippers", "Golden State Warriors", "Golden State Warriors", "");
-        QuestionSet question4 = new MultipleChoice("description 4 for case markers","What's Curry's nickname?", "Baby-faced assassin", "Baby-faced killer", "Baby-faced players", "Mr. Baby Face", "Baby-faced assassin", "");
+        QuestionSet question1 = new MultipleChoice("Translate the following sentence.","I bought a new house.", "Mipalit ko sa bag-o nga balay.", "Mopalit ko og bag-o nga balay.", "Mopalit ko sa bag-o nga balay.", "Mipalit ko og bag-o nga balay.", "Mipalit ko og bag-o nga balay.", "");
+        QuestionSet question2 = new MultipleChoice("Choose the incorrect translation for","I am Pasan.", "Ako si Pasan.", "Si Pasan ako.", "Si ako Pasan.", "Si Pasan ko.", "Si ako Pasan.", "");
+        QuestionSet question3 = new MultipleChoice("Translate the following sentence:","The person is female.", "Ang tawo babaye.", "Ang babaye tawo.", "Tawo ang babaye.", "Babaye tawo.", "Ang tawo babaye.", "");
+        QuestionSet question4 = new MultipleChoice("Fill in the blanks.","_____ lalaki.", "ang", "si", "ni", "kon", "ang", "");
+        QuestionSet question5 = new MultipleChoice("Fill in the blanks.","_____ Joana.", "kon", "ang", "ni", "si", "si", "");
 
         // Add all questions to questionsListList
         questionSets.add(question1);
         questionSets.add(question2);
         questionSets.add(question3);
         questionSets.add(question4);
+        questionSets.add(question5);
 
         return questionSets;
     }

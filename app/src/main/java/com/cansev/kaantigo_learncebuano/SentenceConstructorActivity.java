@@ -1,5 +1,7 @@
 package com.cansev.kaantigo_learncebuano;
 
+import android.content.ClipData;
+import android.content.ClipboardManager;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -7,20 +9,25 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.cansev.kaantigo_learncebuano.database.DatabaseAdapter;
 import com.cansev.kaantigo_learncebuano.database.Term;
 import com.cansev.kaantigo_learncebuano.database.Verb;
+import com.google.android.material.card.MaterialCardView;
 
 import java.util.ArrayList;
 
-public class SentenceConstructorActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener, TextWatcher {
+public class SentenceConstructorActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener, TextWatcher, View.OnClickListener, View.OnFocusChangeListener {
 
     TextView txtResult;
+    MaterialCardView card_result;
+    ImageView sentence_constructor_back;
     Verb verb;
     String action, doer, receiver, goal, instrument;
     boolean isGeneralDoer, isGeneralReceiver, isGeneralGoal, isGeneralInstrument, isCebuano;
@@ -28,6 +35,7 @@ public class SentenceConstructorActivity extends AppCompatActivity implements Ad
     String selectedAction, selectedFocus, selectedAspect, selectedDoer, selectedReceiver, selectedGoal, selectedInstrument;
     ArrayAdapter<String> adapter_action, adapter_focus, adapter_aspect, adapter_doer, adapter_receiver, adapter_goal, adapter_instrument;
     EditText tfAction, tfDoer, tfReceiver, tfGoal, tfInstrument;
+    int currentTextField;
     Spinner spnAction0, spnDoer0, spnReceiver0, spnGoal0, spnInstrument0;
     String selectedAction0, selectedDoer0, selectedReceiver0, selectedGoal0, selectedInstrument0, selectedPronoun;
     ArrayAdapter<String> adapter_action0, adapter_doer0, adapter_receiver0, adapter_goal0, adapter_instrument0, adapter_pronoun;
@@ -39,6 +47,7 @@ public class SentenceConstructorActivity extends AppCompatActivity implements Ad
         setContentView(R.layout.activity_sentence_constructor);
 
         txtResult = findViewById(R.id.txtResult);
+        card_result = findViewById(R.id.card_result);
 
         spnAction = findViewById(R.id.spnAction);
         spnFocus = findViewById(R.id.spnFocus);
@@ -73,7 +82,7 @@ public class SentenceConstructorActivity extends AppCompatActivity implements Ad
         String[] optionsReceiver0 = {" ", "Maria", "Juan", "man, boy", "woman, girl", "food", "water"};
         String[] optionsGoal0 = {" ", "Maria", "Juan", "man, boy", "woman, girl", "road, street, way, path, trail", "house"};
         String[] optionsInstrument0 = {" ", "Maria", "Juan", "man, boy", "woman, girl", "fire", "hand", "water"};
-        String[] optionsPronoun = {"I", "we (singular)", "we (plural)", "you (singular)", "you (plural)", "he, she", "they", "this (temporal)", "this (proximal)", "this (medioproximal)", "that (medial)", "that (distal)"};
+        String[] optionsPronoun = {"I", "we (inclusive)", "we (exclusive)", "you (singular)", "you (plural)", "he, she", "they", "this (temporal)", "this (proximal)", "this (medioproximal)", "that (medial)", "that (distal)"};
 
         adapter_action = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, optionsAction);
         adapter_action.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -153,6 +162,20 @@ public class SentenceConstructorActivity extends AppCompatActivity implements Ad
         databaseAdapter = new DatabaseAdapter(this);
 
         tfAction.addTextChangedListener(this);
+        tfDoer.addTextChangedListener(this);
+        tfReceiver.addTextChangedListener(this);
+        tfGoal.addTextChangedListener(this);
+        tfInstrument.addTextChangedListener(this);
+
+        tfAction.setOnFocusChangeListener(this);
+        tfDoer.setOnFocusChangeListener(this);
+        tfReceiver.setOnFocusChangeListener(this);
+        tfGoal.setOnFocusChangeListener(this);
+        tfInstrument.setOnFocusChangeListener(this);
+
+        card_result.setOnClickListener(this);
+        sentence_constructor_back = findViewById(R.id.sentence_constructor_back);
+        sentence_constructor_back.setOnClickListener(this);
     }
 
     @Override
@@ -373,22 +396,59 @@ public class SentenceConstructorActivity extends AppCompatActivity implements Ad
 
     @Override
     public void onTextChanged(CharSequence charSequence, int start, int before, int count) {
-        action = charSequence.toString();
-        if(action.equals("") || action.equals(" ")) {
-            verb = new Verb("kuan", "kuan", "*");
-        } else {
-            verb = databaseAdapter.getVerb(action, !isCebuano);
+        switch(currentTextField) {
+            case R.id.tfAction:
+                action = charSequence.toString();
+                if(action.equals("") || action.equals(" ")) {
+                    verb = new Verb("kuan", "kuan", "*");
+                } else {
+                    verb = databaseAdapter.getVerb(action, !isCebuano);
+                }
+                break;
+            case R.id.tfDoer:
+                doer = databaseAdapter.getNoun(charSequence.toString()).getWritten_form();
+                selectedDoer0 = doer;
+                break;
+            case R.id.tfReceiver:
+                receiver = databaseAdapter.getNoun(charSequence.toString()).getWritten_form();
+                selectedReceiver0 = receiver;
+                break;
+            case R.id.tfGoal:
+                goal = databaseAdapter.getNoun(charSequence.toString()).getWritten_form();
+                selectedGoal0 = goal;
+                break;
+            case R.id.tfInstrument:
+                instrument = databaseAdapter.getNoun(charSequence.toString()).getWritten_form();
+                selectedInstrument0 = instrument;
+                break;
         }
         try {
             Sentence sentence = new Sentence(verb, selectedFocus, selectedAspect, doer, receiver, goal, instrument, isGeneralDoer, isGeneralReceiver, isGeneralGoal, isGeneralInstrument);
             txtResult.setText(sentence.toString());
-        } catch (Exception ignored) {
-
-        }
+        } catch (Exception ignored) {}
     }
 
     @Override
     public void afterTextChanged(Editable editable) {
 
+    }
+
+    @Override
+    public void onClick(View view) {
+        if (view.getId() == R.id.card_result) {
+            ClipboardManager clipboard = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
+            ClipData clip = ClipData.newPlainText("label", txtResult.getText());
+            clipboard.setPrimaryClip(clip);
+            Toast.makeText(this, "Added text to clipboard.", Toast.LENGTH_SHORT).show();
+        } else if (view.getId() == R.id.sentence_constructor_back) {
+            finish();
+        }
+    }
+
+    @Override
+    public void onFocusChange(View view, boolean b) {
+        if(b) {
+            currentTextField = view.getId();
+        }
     }
 }

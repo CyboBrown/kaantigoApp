@@ -1,39 +1,88 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".quiz.QuizResults">
 
-    <TextView
-        android:id="@+id/textView12"
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/card_quiz_result"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Congrats" />
+        android:layout_margin="@dimen/default_margin"
+        android:animateLayoutChanges="true"
+        android:checkable="true"
+        android:clickable="true"
+        android:focusable="true"
+        app:cardCornerRadius="@dimen/default_card_corner_radius"
+        app:cardElevation="@dimen/default_card_elevation"
+        app:contentPadding="@dimen/default_padding"
+        app:layout_constraintBottom_toTopOf="@+id/btn_b2quiz"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-    <TextView
-        android:id="@+id/correctAnswers"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView12"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/default_spacing_major"
+                android:text="Congrats!"
+                android:textSize="@dimen/default_lesson_title_font_size"
+                android:textStyle="bold"
+                android:textAlignment="center"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/correctAnswers"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Correct Answers: 0"
+                android:textStyle="bold"
+                tools:layout_editor_absoluteY="19dp" />
+
+            <TextView
+                android:id="@+id/incorrectAnswers"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Wrong Answers: 0"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/startNewQuiz" />
+
+        </LinearLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/btn_b2quiz"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Correct Answers: 0"
-        android:textStyle="bold"
-        android:layout_below="@id/textView12"/>
+        android:layout_margin="@dimen/default_margin"
+        android:animateLayoutChanges="true"
+        android:checkable="true"
+        android:clickable="true"
+        android:focusable="true"
+        app:cardCornerRadius="@dimen/default_card_corner_radius_half"
+        app:cardElevation="@dimen/default_card_elevation"
+        app:contentPadding="@dimen/default_padding_half"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
 
-    <TextView
-        android:id="@+id/incorrectAnswers"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Wrong Answers: 0"
-        android:textStyle="bold"
-        android:layout_below="@id/correctAnswers"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Back to Home"
+            android:textAlignment="center"
+            android:textAppearance="?attr/textAppearanceHeadline6" />
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/startNewQuiz"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:text="Start New Quiz"
-        android:textColor="@color/black"
-        android:layout_below="@id/incorrectAnswers"/>
-    
-</RelativeLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

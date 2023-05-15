@@ -6,6 +6,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -70,6 +71,11 @@ public class QuizActivity extends AppCompatActivity {
 
         timerTextView = findViewById(R.id.timer);
         timeLeftInMillis = 20000; // 20 seconds
+
+        ImageView quiz_back = findViewById(R.id.quiz_back);
+        quiz_back.setOnClickListener(view -> {
+            finish();
+        });
 
         // Get questions list based on selectedTopicName
         questionSets = QuestionsBank.getQuestions("caseMarkers");

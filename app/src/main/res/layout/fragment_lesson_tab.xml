@@ -20,6 +20,7 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <TextView
+                android:id="@+id/home"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
@@ -91,12 +92,14 @@
                                 android:orientation="vertical">
 
                                 <TextView
+                                    android:id="@+id/topic"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:text="Lesson 1 - Core Grammar"
                                     android:textAppearance="?attr/textAppearanceHeadline6" />
 
                                 <TextView
+                                    android:id="@+id/secondary"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="@dimen/default_spacing_minor"
@@ -155,6 +158,7 @@
                                 android:text="Basics 2 - Pronouns"
                                 android:textAlignment="textStart"
                                 android:textSize="@dimen/default_lesson_item_font_size"
+                                android:enabled="false"
                                 app:icon="@drawable/ic_circle_current"
                                 app:iconSize="@dimen/default_lesson_icon_size"
                                 app:iconPadding="@dimen/default_spacing_major"/>
@@ -173,6 +177,7 @@
                                 android:text="Basics 3 - Non-Focus Cases"
                                 android:textAlignment="textStart"
                                 android:textSize="@dimen/default_lesson_item_font_size"
+                                android:enabled="false"
                                 app:icon="@drawable/ic_circle_uncheck"
                                 app:iconSize="@dimen/default_lesson_icon_size"
                                 app:iconPadding="@dimen/default_spacing_major"/>

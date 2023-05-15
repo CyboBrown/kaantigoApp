@@ -43,4 +43,7 @@
 
     <color name="lightBrown">#6D4C41</color>
     <color name="darkBrown">#5D4037</color>
+
+    <color name="correctAnswer">#8BC34A</color>
+    <color name="wrongAnswer">#D50000</color>
 </resources>

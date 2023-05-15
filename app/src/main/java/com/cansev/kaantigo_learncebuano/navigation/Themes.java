@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -13,61 +14,64 @@ import com.cansev.kaantigo_learncebuano.R;
 
 public class Themes extends AppCompatActivity {
 
-    Button btn1, btn2;
+    ImageView themes_back;
+    Button btn1, btn2, btn3, btn4;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_themes);
 
+        themes_back = findViewById(R.id.themes_back);
         btn1 = findViewById(R.id.theme1);
         btn2 = findViewById(R.id.theme2);
+        btn3 = findViewById(R.id.theme3);
+        btn4 = findViewById(R.id.theme4);
 
-        btn1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                // Save selected theme in SharedPreferences
-                SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-                prefs.edit().putString("selected_theme", "theme1").apply();
+        themes_back.setOnClickListener(view -> finish());
 
-                // Restart the app to apply the new theme
-                Intent intent = getBaseContext().getPackageManager().getLaunchIntentForPackage(getBaseContext().getPackageName());
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(intent);
+        btn1.setOnClickListener(view -> {
+            // Save selected theme in SharedPreferences
+            SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+            prefs.edit().putString("selected_theme", "theme1").apply();
 
-//                Intent intent = new Intent(Themes.this, MainActivity.class);
-//                startActivity(intent);
-//                Intent intent1 = getIntent();
-//                finish();
-//                startActivity(intent1);
-            }
+            // Restart the app to apply the new theme
+            Intent intent = getBaseContext().getPackageManager().getLaunchIntentForPackage(getBaseContext().getPackageName());
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
         });
 
-        btn2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                // Save selected theme in SharedPreferences
-                SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-                prefs.edit().putString("selected_theme", "theme2").apply();
+        btn2.setOnClickListener(view -> {
+            // Save selected theme in SharedPreferences
+            SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+            prefs.edit().putString("selected_theme", "theme2").apply();
 
-                // Restart the app to apply the new theme
-                Intent intent = getBaseContext().getPackageManager().getLaunchIntentForPackage(getBaseContext().getPackageName());
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(intent);
+            // Restart the app to apply the new theme
+            Intent intent = getBaseContext().getPackageManager().getLaunchIntentForPackage(getBaseContext().getPackageName());
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
+        });
 
-//                Intent intent1 = getIntent();
-//                finish();
-//                startActivity(intent1);
+        btn3.setOnClickListener(view -> {
+            // Save selected theme in SharedPreferences
+            SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+            prefs.edit().putString("selected_theme", "theme3").apply();
 
-                // Navigate back to LessonTabFragment
+            // Restart the app to apply the new theme
+            Intent intent = getBaseContext().getPackageManager().getLaunchIntentForPackage(getBaseContext().getPackageName());
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
+        });
 
+        btn4.setOnClickListener(view -> {
+            // Save selected theme in SharedPreferences
+            SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+            prefs.edit().putString("selected_theme", "theme4").apply();
 
-//                Intent intent = new Intent(Themes.this, MainActivity.class);
-//                startActivity(intent);
-//                Intent intent = getIntent();
-//                finish();
-//                startActivity(intent);
-            }
+            // Restart the app to apply the new theme
+            Intent intent = getBaseContext().getPackageManager().getLaunchIntentForPackage(getBaseContext().getPackageName());
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
         });
     }
 

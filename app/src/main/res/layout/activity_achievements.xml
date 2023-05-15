@@ -1,0 +1,496 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".navigation.AchievementsActivity">
+    <RelativeLayout
+        android:id="@+id/relativeLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/default_title_bar_height"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/profile_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/default_title_bar_icon_padding"
+            android:src="@drawable/ic_back" />
+
+        <TextView
+            android:id="@+id/profile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="Achievements"
+            android:textAppearance="?attr/textAppearanceHeadline6"
+            android:textSize="@dimen/default_title_bar_font_size" />
+
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="?android:attr/listDivider"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/relativeLayout2" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/default_margin_half"
+
+            android:layout_marginRight="@dimen/default_margin_half"
+            android:layout_marginBottom="@dimen/default_margin_half"
+            android:orientation="vertical">
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/card_lesson_completion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/default_margin_half"
+                android:layout_marginTop="@dimen/default_margin_half"
+                android:layout_marginRight="@dimen/default_margin_half"
+                android:layout_marginBottom="@dimen/default_margin_half"
+                android:animateLayoutChanges="true"
+                android:checkable="true"
+                android:clickable="true"
+                android:focusable="true"
+                app:cardCornerRadius="@dimen/default_card_corner_radius"
+                app:cardElevation="@dimen/default_card_elevation"
+                app:contentPadding="@dimen/default_padding">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Lesson Completion Achievements"
+                        android:textColor="?android:attr/textColorSecondary" />
+
+                    <com.google.android.material.divider.MaterialDivider
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:visibility="visible" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:gravity="center_horizontal">
+
+                            <ImageView
+                                android:id="@+id/lessonCaseMarkersLocked"
+                                android:layout_width="180dp"
+                                android:layout_height="180dp"
+                                android:clickable="true"
+                                android:src="@drawable/achievements_locked"
+                                app:tint="@color/lightGreenDark" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/lightGreenDark"
+                                android:text="Case Markers" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:gravity="center_horizontal">
+
+                            <ImageView
+                                android:id="@+id/lessonPersonalPronounsLocked"
+                                android:layout_width="180dp"
+                                android:layout_height="180dp"
+                                android:clickable="true"
+                                android:src="@drawable/achievements_locked"
+                                app:tint="@color/lightGreenDark" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/lightGreenDark"
+                                android:text="Personal Pronouns" />
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:gravity="center_horizontal">
+
+                        <ImageView
+                            android:id="@+id/lessonDemonstrativePronounsLocked"
+                            android:layout_width="180dp"
+                            android:layout_height="180dp"
+                            android:clickable="true"
+                            android:src="@drawable/achievements_locked"
+                            app:tint="@color/lightGreenDark" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/lightGreenDark"
+                            android:text="Demonstrative Pronouns" />
+
+                    </LinearLayout>
+
+                    <com.google.android.material.divider.MaterialDivider
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:visibility="visible" />
+
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/card_quiz_completion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/default_margin_half"
+                android:layout_marginTop="@dimen/default_margin_half"
+                android:layout_marginRight="@dimen/default_margin_half"
+                android:layout_marginBottom="@dimen/default_margin_half"
+                android:animateLayoutChanges="true"
+                android:checkable="true"
+                android:clickable="true"
+                android:focusable="true"
+                app:cardCornerRadius="@dimen/default_card_corner_radius"
+                app:cardElevation="@dimen/default_card_elevation"
+                app:contentPadding="@dimen/default_padding">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Quiz Completion Achievements"
+                        android:textColor="?android:attr/textColorSecondary" />
+
+                    <com.google.android.material.divider.MaterialDivider
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:visibility="visible" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:gravity="center_horizontal">
+
+                            <ImageView
+                                android:id="@+id/quizCaseMarkersLocked"
+                                android:layout_width="180dp"
+                                android:layout_height="180dp"
+                                android:clickable="true"
+                                android:src="@drawable/achievements_locked"
+                                app:tint="@color/lightGreenDark" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/lightGreenDark"
+                                android:text="Case Markers" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:gravity="center_horizontal">
+
+                            <ImageView
+                                android:id="@+id/quizPersonalPronounsLocked"
+                                android:layout_width="180dp"
+                                android:layout_height="180dp"
+                                android:clickable="true"
+                                android:src="@drawable/achievements_locked"
+                                app:tint="@color/lightGreenDark" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/lightGreenDark"
+                                android:text="Personal Pronouns" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:gravity="center_horizontal">
+
+                        <ImageView
+                            android:id="@+id/quizDemonstrativePronounsLocked"
+                            android:layout_width="180dp"
+                            android:layout_height="180dp"
+                            android:clickable="true"
+                            android:src="@drawable/achievements_locked"
+                            app:tint="@color/lightGreenDark" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/lightGreenDark"
+                            android:text="Demonstrative Pronouns" />
+
+                    </LinearLayout>
+
+                    <com.google.android.material.divider.MaterialDivider
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:visibility="visible" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/card_perfect_score"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/default_margin_half"
+                android:layout_marginTop="@dimen/default_margin_half"
+                android:layout_marginRight="@dimen/default_margin_half"
+                android:layout_marginBottom="@dimen/default_margin_half"
+                android:animateLayoutChanges="true"
+                android:checkable="true"
+                android:clickable="true"
+                android:focusable="true"
+                app:cardCornerRadius="@dimen/default_card_corner_radius"
+                app:cardElevation="@dimen/default_card_elevation"
+                app:contentPadding="@dimen/default_padding">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Perfect Score Achievements"
+                        android:textColor="?android:attr/textColorSecondary" />
+
+                    <com.google.android.material.divider.MaterialDivider
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:visibility="visible" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:gravity="center_horizontal">
+
+                            <ImageView
+                                android:id="@+id/perfectCaseMarkersLocked"
+                                android:layout_width="180dp"
+                                android:layout_height="180dp"
+                                android:clickable="true"
+                                android:src="@drawable/achievements_locked"
+                                app:tint="@color/lightGreenDark" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/lightGreenDark"
+                                android:text="Case Markers" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:gravity="center_horizontal">
+
+                            <ImageView
+                                android:id="@+id/perfectPersonalPronounsLocked"
+                                android:layout_width="180dp"
+                                android:layout_height="180dp"
+                                android:clickable="true"
+                                android:src="@drawable/achievements_locked"
+                                app:tint="@color/lightGreenDark" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/lightGreenDark"
+                                android:text="Personal Pronouns" />
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:gravity="center_horizontal">
+
+                        <ImageView
+                            android:id="@+id/perfectDemonstrativePronounsLocked"
+                            android:layout_width="180dp"
+                            android:layout_height="180dp"
+                            android:clickable="true"
+                            android:src="@drawable/achievements_locked"
+                            app:tint="@color/lightGreenDark" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/lightGreenDark"
+                            android:text="Demonstrative Pronouns" />
+
+                    </LinearLayout>
+
+                    <com.google.android.material.divider.MaterialDivider
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:visibility="visible" />
+
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- Lesson Completion AchievementsActivity: -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Lesson Completion Achievements"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:paddingTop="16dp"
+        android:paddingBottom="8dp" />
+
+    <TextView
+        android:id="@+id/lessonCaseMarkers"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="- Novice Learner: Complete case markers lesson" />
+
+    <TextView
+        android:id="@+id/lessonPersonalPronouns"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="- Intermediate Learner: Complete personal pronouns lesson" />
+
+    <TextView
+        android:id="@+id/lessonDemonstrativePronouns"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="- Expert Learner: Complete demonstrative pronouns lesson" />
+
+    <!-- Quiz Completion AchievementsActivity: -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/darker_gray"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Quiz Completion Achievements:"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:paddingTop="16dp"
+        android:paddingBottom="8dp" />
+
+    <TextView
+        android:id="@+id/quizCaseMarkers"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="- Quiz Novice: Complete case markers quiz" />
+
+    <TextView
+        android:id="@+id/quizPersonalPronouns"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="- Quiz Intermediate: Complete personal pronouns quiz" />
+
+    <TextView
+        android:id="@+id/quizDemonstrativePronouns"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="- Quiz Master: Complete demonstrative pronouns quiz" />
+
+    <!-- Perfect Score AchievementsActivity: -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/darker_gray"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Perfect Score Achievements:"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:paddingTop="16dp"
+        android:paddingBottom="8dp" />
+
+    <TextView
+        android:id="@+id/perfectCaseMarkers"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="- Perfect Novice: Get a perfect score on case markers" />
+
+    <TextView
+        android:id="@+id/perfectPersonalPronouns"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="- Perfect Intermediate: Get a perfect score on personal pronouns" />
+
+    <TextView
+        android:id="@+id/perfectDemonstrativePronouns"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="- Perfect Advanced: Get a perfect score on demonstrative pronouns" />
+
+</LinearLayout>

@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 
 import com.cansev.kaantigo_learncebuano.R;
+import com.google.android.material.card.MaterialCardView;
 
 public class QuizResults extends AppCompatActivity {
 
@@ -17,7 +18,7 @@ public class QuizResults extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz_results);
 
-        final AppCompatButton startNewBtn = findViewById(R.id.startNewQuiz);
+        final MaterialCardView btn_b2quiz = findViewById(R.id.btn_b2quiz);
         final TextView correctAnswers = findViewById(R.id.correctAnswers);
         final TextView incorrectAnswers = findViewById(R.id.incorrectAnswers);
 
@@ -27,12 +28,6 @@ public class QuizResults extends AppCompatActivity {
         correctAnswers.setText("Correct Answers: " + String.valueOf(getCorrectAnswers));
         incorrectAnswers.setText("Incorrect Answers: " + String.valueOf(getInCorrectAnswers));
 
-        startNewBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(QuizResults.this, QuizActivity.class));
-                finish();
-            }
-        });
+        btn_b2quiz.setOnClickListener(view -> finish());
     }
 }

@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
         bottomNavigationView.setSelectedItemId(R.id.page_1);
         getSupportFragmentManager().beginTransaction().replace(R.id.container, lessonTabFragment).commit();
         BadgeDrawable badgeDrawable = bottomNavigationView.getOrCreateBadge(R.id.page_4);
-        badgeDrawable.setNumber(69);
+        badgeDrawable.setNumber(1);
 
         bottomNavigationView.setOnItemSelectedListener(item -> {
             switch(item.getItemId()) {
