@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/sentence_constructor_page"
     tools:context=".SentenceConstructorActivity">
 
     <LinearLayout
@@ -30,7 +31,7 @@
                 android:layout_centerInParent="true"
                 android:text="Sentence Constructor"
                 android:textAppearance="?attr/textAppearanceHeadline6"
-                android:textSize="@dimen/default_title_bar_font_size"/>
+                android:textSize="@dimen/default_title_bar_font_size" />
         </RelativeLayout>
 
         <View
@@ -42,7 +43,7 @@
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-            
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -99,6 +100,7 @@
                             android:paddingVertical="@dimen/default_padding_half">
 
                             <TextView
+                                android:id="@+id/action"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
@@ -144,6 +146,7 @@
                             android:paddingVertical="@dimen/default_padding_half">
 
                             <TextView
+                                android:id="@+id/focus"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
@@ -167,6 +170,7 @@
                             android:paddingVertical="@dimen/default_padding_half">
 
                             <TextView
+                                android:id="@+id/aspect"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
@@ -190,6 +194,7 @@
                             android:paddingVertical="@dimen/default_padding_half">
 
                             <TextView
+                                android:id="@+id/doer"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
@@ -236,6 +241,7 @@
                             android:paddingVertical="@dimen/default_padding_half">
 
                             <TextView
+                                android:id="@+id/receiver"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
@@ -282,6 +288,7 @@
                             android:paddingVertical="@dimen/default_padding_half">
 
                             <TextView
+                                android:id="@+id/location"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
@@ -328,6 +335,7 @@
                             android:paddingVertical="@dimen/default_padding_half">
 
                             <TextView
+                                android:id="@+id/instrument"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"

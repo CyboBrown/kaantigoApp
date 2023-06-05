@@ -4,6 +4,8 @@ import android.animation.LayoutTransition;
 import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
+import android.graphics.PorterDuff;
+import android.graphics.drawable.Drawable;
 import android.graphics.drawable.Icon;
 import android.os.Bundle;
 
@@ -28,8 +30,11 @@ import com.cansev.kaantigo_learncebuano.lesson.LessonFragment;
 import com.cansev.kaantigo_learncebuano.R;
 import com.cansev.kaantigo_learncebuano.lesson.DemonstrativePronounTableFragment;
 import com.cansev.kaantigo_learncebuano.lesson.PersonalPronounTableFragment;
+import com.google.android.material.button.MaterialButton;
 import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.chip.Chip;
+
+import org.w3c.dom.Text;
 
 public class LessonTabFragment extends Fragment implements View.OnClickListener {
 
@@ -110,16 +115,21 @@ public class LessonTabFragment extends Fragment implements View.OnClickListener 
 
     private void applyTheme(View view) {
         // Use the saved theme value to update colors
-        MaterialCardView materialCardView = view.findViewById(R.id.card_quiz);
+        MaterialCardView materialCardView = view.findViewById(R.id.card_flashcards);
         TextView home = view.findViewById(R.id.home);
         TextView topic = view.findViewById(R.id.topic);
         TextView secondary = view.findViewById(R.id.secondary);
-        Button caseMarkers = view.findViewById(R.id.btn1);
-        Button personalPronouns = view.findViewById(R.id.btn2);
-//        Button demonstrativePronouns = view.findViewById(R.id.btn3);
+        MaterialButton focusCase = view.findViewById(R.id.btn_pref_themes);
+        MaterialButton pronouns = view.findViewById(R.id.btn_pref_achievements);
+        MaterialButton nonFocusCases = view.findViewById(R.id.btn_pref_notifications);
         ProgressBar progressBar = view.findViewById(R.id.pb_lesson1);
         View divider = view.findViewById(R.id.divider);
         ImageView expand_card = view.findViewById(R.id.expand_card);
+
+        // Get the drawable for the icon
+        Drawable circleCheck = ContextCompat.getDrawable(getContext(), R.drawable.ic_circle_check);
+        Drawable circleUncheck = ContextCompat.getDrawable(getContext(), R.drawable.ic_circle_uncheck);
+        Drawable current = ContextCompat.getDrawable(getContext(), R.drawable.ic_circle_current);
 
         switch(selectedTheme) {
             case "theme1":
@@ -128,14 +138,25 @@ public class LessonTabFragment extends Fragment implements View.OnClickListener 
                 home.setTextColor(Color.WHITE);
                 topic.setTextColor(Color.WHITE);
                 secondary.setTextColor(Color.WHITE);
-                caseMarkers.setTextColor(Color.WHITE);
-                personalPronouns.setTextColor(Color.WHITE);
-//                demonstrativePronouns.setTextColor(Color.WHITE);
+                focusCase.setTextColor(Color.WHITE);
+                pronouns.setTextColor(Color.WHITE);
+                nonFocusCases.setTextColor(Color.WHITE);
                 progressBar.setProgressTintList(ColorStateList.valueOf(Color.WHITE));
                 view.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.darkBlack));
                 divider.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.lightBlack));
                 materialCardView.setCardBackgroundColor(ContextCompat.getColor(getContext(), R.color.lightBlack));
                 expand_card.setColorFilter(Color.WHITE);
+
+                // Set the desired color on the icon drawable
+                int desiredColor = Color.WHITE;
+                circleCheck.setColorFilter(desiredColor, PorterDuff.Mode.SRC_IN);
+                circleUncheck.setColorFilter(desiredColor, PorterDuff.Mode.SRC_IN);
+                current.setColorFilter(desiredColor, PorterDuff.Mode.SRC_IN);
+
+
+                // Set the modified drawable as the button's icon
+                focusCase.setIcon(circleCheck);
+
                 break;
 
             case "theme3":
@@ -144,14 +165,25 @@ public class LessonTabFragment extends Fragment implements View.OnClickListener 
                 home.setTextColor(Color.WHITE);
                 topic.setTextColor(Color.WHITE);
                 secondary.setTextColor(Color.WHITE);
-                caseMarkers.setTextColor(Color.WHITE);
-                personalPronouns.setTextColor(Color.WHITE);
-//                demonstrativePronouns.setTextColor(Color.WHITE);
+                focusCase.setTextColor(Color.WHITE);
+                pronouns.setTextColor(Color.WHITE);
+                nonFocusCases.setTextColor(Color.WHITE);
                 progressBar.setProgressTintList(ColorStateList.valueOf(Color.WHITE));
                 view.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.lightGreenDark));
                 divider.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.lightGreenLight));
                 materialCardView.setCardBackgroundColor(ContextCompat.getColor(getContext(), R.color.lightGreenLight));
                 expand_card.setColorFilter(Color.WHITE);
+
+                // Set the desired color on the icon drawable
+                int desiredColor1 = Color.WHITE;
+                circleCheck.setColorFilter(desiredColor1, PorterDuff.Mode.SRC_IN);
+                circleUncheck.setColorFilter(desiredColor1, PorterDuff.Mode.SRC_IN);
+                current.setColorFilter(desiredColor1, PorterDuff.Mode.SRC_IN);
+
+
+                // Set the modified drawable as the button's icon
+                focusCase.setIcon(circleCheck);
+
                 break;
 
             case "theme4":
@@ -160,15 +192,27 @@ public class LessonTabFragment extends Fragment implements View.OnClickListener 
                 home.setTextColor(Color.WHITE);
                 topic.setTextColor(Color.WHITE);
                 secondary.setTextColor(Color.WHITE);
-                caseMarkers.setTextColor(Color.WHITE);
-                personalPronouns.setTextColor(Color.WHITE);
-//                demonstrativePronouns.setTextColor(Color.WHITE);
+                focusCase.setTextColor(Color.WHITE);
+                pronouns.setTextColor(Color.WHITE);
+                nonFocusCases.setTextColor(Color.WHITE);
                 progressBar.setProgressTintList(ColorStateList.valueOf(Color.WHITE));
                 view.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.lightBlueDark));
                 divider.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.lightBlueLight));
                 materialCardView.setCardBackgroundColor(ContextCompat.getColor(getContext(), R.color.lightBlueLight));
                 expand_card.setColorFilter(Color.WHITE);
+
+                // Set the desired color on the icon drawable
+                int desiredColor2 = Color.WHITE;
+                circleCheck.setColorFilter(desiredColor2, PorterDuff.Mode.SRC_IN);
+                circleUncheck.setColorFilter(desiredColor2, PorterDuff.Mode.SRC_IN);
+                current.setColorFilter(desiredColor2, PorterDuff.Mode.SRC_IN);
+
+
+                // Set the modified drawable as the button's icon
+                focusCase.setIcon(circleCheck);
+
                 break;
         }
+
     }
 }

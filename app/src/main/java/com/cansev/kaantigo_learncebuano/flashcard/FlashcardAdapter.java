@@ -81,21 +81,21 @@ public class FlashcardAdapter extends PagerAdapter {
 
         switch(selectedTheme) {
             case "theme1":
-                view.setBackgroundColor(ContextCompat.getColor(container.getContext(),R.color.darkBlack));
+                view.setBackgroundColor(ContextCompat.getColor(container.getContext(), R.color.darkBlack));
                 frontCardView.setCardBackgroundColor(ContextCompat.getColor(container.getContext(), R.color.lightBlack));
                 backCardView.setCardBackgroundColor(ContextCompat.getColor(container.getContext(), R.color.lightBlack));
                 frontTextView.setTextColor(Color.WHITE);
                 backTextView.setTextColor(Color.WHITE);
                 break;
             case "theme3":
-                view.setBackgroundColor(ContextCompat.getColor(container.getContext(),R.color.lightGreenDark));
+                view.setBackgroundColor(ContextCompat.getColor(container.getContext(), R.color.lightGreenDark));
                 frontCardView.setCardBackgroundColor(ContextCompat.getColor(container.getContext(), R.color.lightGreenLight));
                 backCardView.setCardBackgroundColor(ContextCompat.getColor(container.getContext(), R.color.lightGreenLight));
                 frontTextView.setTextColor(Color.WHITE);
                 backTextView.setTextColor(Color.WHITE);
                 break;
             case "theme4":
-                view.setBackgroundColor(ContextCompat.getColor(container.getContext(),R.color.lightBlueDark));
+                view.setBackgroundColor(ContextCompat.getColor(container.getContext(), R.color.lightBlueDark));
                 frontCardView.setCardBackgroundColor(ContextCompat.getColor(container.getContext(), R.color.lightBlueLight));
                 backCardView.setCardBackgroundColor(ContextCompat.getColor(container.getContext(), R.color.lightBlueLight));
                 frontTextView.setTextColor(Color.WHITE);

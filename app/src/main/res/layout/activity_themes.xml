@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:id="@+id/themesPage"
     tools:context=".navigation.Themes">
 
     <RelativeLayout
@@ -23,12 +24,13 @@
             android:src="@drawable/ic_back" />
 
         <TextView
+            android:id="@+id/themes"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:text="Themes"
             android:textAppearance="?attr/textAppearanceHeadline6"
-            android:textSize="@dimen/default_title_bar_font_size"/>
+            android:textSize="@dimen/default_title_bar_font_size" />
 
     </RelativeLayout>
 
@@ -53,7 +55,7 @@
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/theme1"
                 android:layout_width="match_parent"
-                android:layout_height="150dp"
+                android:layout_height="200dp"
                 android:background="@color/darkBlack"
                 android:textColor="@color/white"
                 android:textSize="22sp"
@@ -62,27 +64,30 @@
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/theme2"
                 android:layout_width="match_parent"
-                android:layout_height="150dp"
+                android:layout_height="200dp"
                 android:background="@color/white"
                 android:textColor="@color/black"
                 android:textSize="22sp"
                 android:text="THEME 2"/>
+
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/theme3"
                 android:layout_width="match_parent"
-                android:layout_height="150dp"
+                android:layout_height="200dp"
                 android:background="@color/lightGreenDark"
                 android:textColor="@color/white"
                 android:textSize="22sp"
                 android:text="THEME 3"/>
+
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/theme4"
                 android:layout_width="match_parent"
-                android:layout_height="150dp"
+                android:layout_height="200dp"
                 android:background="@color/lightBlueDark"
                 android:textColor="@color/white"
                 android:textSize="22sp"
                 android:text="THEME 4"/>
+
         </LinearLayout>
     </ScrollView>
 

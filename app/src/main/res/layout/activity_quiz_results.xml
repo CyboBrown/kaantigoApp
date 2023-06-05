@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/resultPage"
     tools:context=".quiz.QuizResults">
 
     <com.google.android.material.card.MaterialCardView
@@ -77,6 +78,7 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <TextView
+            android:id="@+id/backToHome"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Back to Home"

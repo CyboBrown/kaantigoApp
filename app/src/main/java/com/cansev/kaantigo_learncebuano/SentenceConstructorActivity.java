@@ -2,24 +2,33 @@ package com.cansev.kaantigo_learncebuano;
 
 import android.content.ClipData;
 import android.content.ClipboardManager;
+import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.content.ContextCompat;
 
 import com.cansev.kaantigo_learncebuano.database.DatabaseAdapter;
 import com.cansev.kaantigo_learncebuano.database.Term;
 import com.cansev.kaantigo_learncebuano.database.Verb;
 import com.google.android.material.card.MaterialCardView;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
@@ -41,10 +50,20 @@ public class SentenceConstructorActivity extends AppCompatActivity implements Ad
     ArrayAdapter<String> adapter_action0, adapter_doer0, adapter_receiver0, adapter_goal0, adapter_instrument0, adapter_pronoun;
     DatabaseAdapter databaseAdapter;
 
+    private String selectedTheme;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sentence_constructor);
+
+        // Get an instance of SharedPreferences
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+
+        // Retrieve the saved theme value from SharedPreferences
+        selectedTheme = prefs.getString("selected_theme", "default");
+
+        applyTheme();
 
         txtResult = findViewById(R.id.txtResult);
         card_result = findViewById(R.id.card_result);
@@ -176,6 +195,107 @@ public class SentenceConstructorActivity extends AppCompatActivity implements Ad
         card_result.setOnClickListener(this);
         sentence_constructor_back = findViewById(R.id.sentence_constructor_back);
         sentence_constructor_back.setOnClickListener(this);
+    }
+
+
+    private void applyTheme() {
+        TextView topicName = findViewById(R.id.topicName);
+        ConstraintLayout sentence_constructor_page = findViewById(R.id.sentence_constructor_page);
+        View divider = findViewById(R.id.divider);
+        MaterialCardView card_result = findViewById(R.id.card_result);
+        TextView txtResult = findViewById(R.id.txtResult);
+        MaterialCardView card_parameters = findViewById(R.id.card_parameters);
+        TextView action = findViewById(R.id.action);
+        TextView focus = findViewById(R.id.focus);
+        TextView aspect = findViewById(R.id.aspect);
+        TextView doer = findViewById(R.id.doer);
+        TextView receiver = findViewById(R.id.receiver);
+        TextView location = findViewById(R.id.location);
+        TextView instrument = findViewById(R.id.instrument);
+
+        EditText tfAction = findViewById(R.id.tfAction);
+        EditText tfDoer = findViewById(R.id.tfDoer);
+        EditText tfReceiver = findViewById(R.id.tfReceiver);
+        EditText tfGoal = findViewById(R.id.tfGoal);
+        EditText tfInstrument = findViewById(R.id.tfInstrument);
+        Spinner spnAction = findViewById(R.id.spnAction);
+        ImageView sentence_constructor_back = findViewById(R.id.sentence_constructor_back);
+
+        TableRow trAction = findViewById(R.id.trAction);
+        switch (selectedTheme) {
+            case "theme1":
+                topicName.setTextColor(Color.WHITE);
+                sentence_constructor_page.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.darkBlack));
+                divider.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.lightBlack));
+                card_result.setCardBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.lightBlack));
+                txtResult.setTextColor(Color.WHITE);
+                card_parameters.setCardBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.lightBlack));
+                action.setTextColor(Color.WHITE);
+                focus.setTextColor(Color.WHITE);
+                aspect.setTextColor(Color.WHITE);
+                doer.setTextColor(Color.WHITE);
+                receiver.setTextColor(Color.WHITE);
+                location.setTextColor(Color.WHITE);
+                instrument.setTextColor(Color.WHITE);
+
+                tfAction.setHintTextColor(Color.WHITE);
+                tfDoer.setHintTextColor(Color.WHITE);
+                tfReceiver.setHintTextColor(Color.WHITE);
+                tfGoal.setHintTextColor(Color.WHITE);
+                tfInstrument.setHintTextColor(Color.WHITE);
+
+                sentence_constructor_back.setColorFilter(Color.WHITE);
+
+                break;
+            case "theme3":
+                topicName.setTextColor(Color.WHITE);
+                sentence_constructor_page.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.lightGreenDark));
+                divider.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.lightGreenLight));
+                card_result.setCardBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.lightGreenLight));
+                txtResult.setTextColor(Color.WHITE);
+                card_parameters.setCardBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.lightGreenLight));
+                action.setTextColor(Color.WHITE);
+                focus.setTextColor(Color.WHITE);
+                aspect.setTextColor(Color.WHITE);
+                doer.setTextColor(Color.WHITE);
+                receiver.setTextColor(Color.WHITE);
+                location.setTextColor(Color.WHITE);
+                instrument.setTextColor(Color.WHITE);
+
+                tfAction.setHintTextColor(Color.WHITE);
+                tfDoer.setHintTextColor(Color.WHITE);
+                tfReceiver.setHintTextColor(Color.WHITE);
+                tfGoal.setHintTextColor(Color.WHITE);
+                tfInstrument.setHintTextColor(Color.WHITE);
+
+                sentence_constructor_back.setColorFilter(Color.WHITE);
+
+                break;
+            case "theme4":
+                topicName.setTextColor(Color.WHITE);
+                sentence_constructor_page.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.lightBlueDark));
+                divider.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.lightBlueLight));
+                card_result.setCardBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.lightBlueLight));
+                txtResult.setTextColor(Color.WHITE);
+                card_parameters.setCardBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.lightBlueLight));
+                action.setTextColor(Color.WHITE);
+                focus.setTextColor(Color.WHITE);
+                aspect.setTextColor(Color.WHITE);
+                doer.setTextColor(Color.WHITE);
+                receiver.setTextColor(Color.WHITE);
+                location.setTextColor(Color.WHITE);
+                instrument.setTextColor(Color.WHITE);
+
+                tfAction.setHintTextColor(Color.WHITE);
+                tfDoer.setHintTextColor(Color.WHITE);
+                tfReceiver.setHintTextColor(Color.WHITE);
+                tfGoal.setHintTextColor(Color.WHITE);
+                tfInstrument.setHintTextColor(Color.WHITE);
+
+                sentence_constructor_back.setColorFilter(Color.WHITE);
+
+                break;
+        }
     }
 
     @Override

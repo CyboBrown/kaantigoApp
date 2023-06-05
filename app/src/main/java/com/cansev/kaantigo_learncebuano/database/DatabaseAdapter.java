@@ -40,10 +40,7 @@ public class DatabaseAdapter {
         }
         try {
             cursor = db.rawQuery("SELECT * FROM (SELECT word_ceb, written_form, affixed_form, word_en, pos, category FROM ceb_adjectives UNION SELECT word_ceb, written_form, affixed_form, word_en, pos, category FROM ceb_nouns UNION SELECT word_ceb, written_form, affixed_form, word_en, pos, category FROM ceb_verbs UNION SELECT word_ceb, written_form, affixed_form, word_en, pos, category FROM ceb_special) merged_table" +
-                            " WHERE " + searchColumn + " LIKE '" + searchCommand + "' ORDER BY " + searchColumn + " LIMIT 100", new String[]{});
-//            cursor = db.query(DatabaseHelper.TABLE_NAME, new String[]{DatabaseHelper.KEY_WORD_CEB, DatabaseHelper.KEY_WRITTEN_FORM, DatabaseHelper.KEY_AFFIXED_FORM, DatabaseHelper.KEY_WORD_EN, DatabaseHelper.KEY_VERB_TYPE},
-//                    searchColumn + " LIKE '" + searchCommand + "'", null, null, null, searchColumn);
-//            System.out.println(cursor);
+                    " WHERE " + searchColumn + " LIKE '" + searchCommand + "' ORDER BY " + searchColumn + " LIMIT 100", new String[]{});
             while(cursor.moveToNext()) {
                 int index1 = cursor.getColumnIndex(DatabaseHelper.KEY_WORD_CEB);
                 String word_ceb = cursor.getString(index1);
@@ -60,11 +57,6 @@ public class DatabaseAdapter {
                 Term term = new Term(word_ceb, written_form, affixed_form, word_en, pos, category);
                 termList.add(term);
             }
-//            for(Term term : termList) {
-//                System.out.println(term);
-//                System.out.println("***");
-//            }
-//            System.out.println("___");
         } catch (SQLiteException e) {
             return termList;
         } finally {

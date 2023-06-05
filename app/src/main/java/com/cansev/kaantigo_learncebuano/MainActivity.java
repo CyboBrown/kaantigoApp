@@ -1,8 +1,10 @@
 package com.cansev.kaantigo_learncebuano;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 
@@ -23,6 +25,8 @@ public class MainActivity extends AppCompatActivity {
     QuizTabFragment quizFragment = new QuizTabFragment();
     ProfileTabFragment profileFragment = new ProfileTabFragment();
 
+    private String selectedTheme;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,20 +36,15 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
 
         // Retrieve the saved theme value from SharedPreferences
-        String selectedTheme = prefs.getString("selected_theme", "default");
+        selectedTheme = prefs.getString("selected_theme", "default");
 
         // Find the BottomNavigationView
         bottomNavigationView = findViewById(R.id.bottom_navigation);
 
         // Set the background color based on the selected theme
-        if(selectedTheme.equals("theme1")){
-            setTheme(R.style.Theme_KaantigoLearnCebuano);
-        }else if(selectedTheme.equals("theme2")){
-            setTheme(R.style.Theme_Sample);
-        }else{
-            setTheme(R.style.Theme_KaantigoLearnCebuano);
-        }
+        setThemeBackground();
 
+        bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setSelectedItemId(R.id.page_1);
         getSupportFragmentManager().beginTransaction().replace(R.id.container, lessonTabFragment).commit();
         BadgeDrawable badgeDrawable = bottomNavigationView.getOrCreateBadge(R.id.page_4);
@@ -76,5 +75,34 @@ public class MainActivity extends AppCompatActivity {
             }
             return false;
         });
+    }
+
+    @Override
+    protected void onPostResume() {
+        super.onPostResume();
+        // Retrieve the saved theme value from SharedPreferences again, in case it has changed
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        selectedTheme = prefs.getString("selected_theme", "default");
+
+        // Update the background color based on the selected theme
+        setThemeBackground();
+    }
+
+    private void setThemeBackground() {
+
+        switch(selectedTheme) {
+            case "theme1":
+                bottomNavigationView.setBackgroundColor(ContextCompat.getColor(getBaseContext(), R.color.lightBlack));
+                break;
+            case "theme3":
+                bottomNavigationView.setBackgroundColor(ContextCompat.getColor(getBaseContext(), R.color.lightGreenLight));
+                break;
+            case "theme4":
+                bottomNavigationView.setBackgroundColor(ContextCompat.getColor(getBaseContext(), R.color.lightBlueLight));
+                break;
+            default:
+                bottomNavigationView.setBackgroundColor(Color.parseColor("#6200EE"));
+        }
+
     }
 }

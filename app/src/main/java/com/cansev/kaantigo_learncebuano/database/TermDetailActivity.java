@@ -1,13 +1,20 @@
 package com.cansev.kaantigo_learncebuano.database;
 
 import android.annotation.SuppressLint;
+import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TableLayout;
+import android.widget.TableRow;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.content.ContextCompat;
 
 import com.cansev.kaantigo_learncebuano.R;
 
@@ -22,6 +29,15 @@ public class TermDetailActivity extends AppCompatActivity {
     TableLayout tblConjugation;
     TextView tvTableTitle;
     ImageView aspectNext, aspectPrev;
+
+    LinearLayout linearLayout;
+    ConstraintLayout mainPage;
+
+    View divider3;
+
+    TableRow tableRow;
+
+    private String selectedTheme;
     TextView tvR0C0, tvR0C1, tvR0C2,
             tvR1C0, tvR1C1, tvR1C2,
             tvR2C0, tvR2C1, tvR2C2,
@@ -40,7 +56,20 @@ public class TermDetailActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+//        applyTheme();
+
+
         setContentView(R.layout.activity_term_detail);
+
+
+        // Get an instance of SharedPreferences
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+
+        // Retrieve the saved theme value from SharedPreferences
+        selectedTheme = prefs.getString("selected_theme", "default");
+
+
+
         termSelected = (Term) getIntent().getSerializableExtra("termSelected");
         itemPosition = getIntent().getIntExtra("itemPosition", 1);
 
@@ -48,6 +77,44 @@ public class TermDetailActivity extends AppCompatActivity {
         tvPOS = findViewById(R.id.tvPOS);
         tvPron = findViewById(R.id.tvPronunciation);
         tvEng = findViewById(R.id.tvEnglishWord);
+        mainPage = findViewById(R.id.mainPage);
+        divider3 = findViewById(R.id.divider3);
+        tableRow = findViewById(R.id.tableRow);
+        tvTableTitle = findViewById(R.id.tvTableTitle);
+
+        switch(selectedTheme) {
+            case "theme1":
+                mainPage.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.darkBlack));
+                tvCeb.setTextColor(Color.WHITE);
+                tvPOS.setTextColor(Color.WHITE);
+                tvPron.setTextColor(Color.WHITE);
+                tvEng.setTextColor(Color.WHITE);
+                divider3.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.lightBlack));
+                tableRow.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.lightBlack));
+                tvTableTitle.setTextColor(Color.WHITE);
+                break;
+            case "theme3":
+                mainPage.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.lightGreenDark));
+                tvCeb.setTextColor(Color.WHITE);
+                tvPOS.setTextColor(Color.WHITE);
+                tvPron.setTextColor(Color.WHITE);
+                tvEng.setTextColor(Color.WHITE);
+                divider3.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.lightGreenLight));
+                tableRow.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.lightGreenLight));
+                tvTableTitle.setTextColor(Color.WHITE);
+                break;
+            case "theme4":
+                mainPage.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.lightBlueDark));
+                tvCeb.setTextColor(Color.WHITE);
+                tvPOS.setTextColor(Color.WHITE);
+                tvPron.setTextColor(Color.WHITE);
+                tvEng.setTextColor(Color.WHITE);
+                divider3.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.lightBlueLight));
+                tableRow.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.lightBlueLight));
+                tvTableTitle.setTextColor(Color.WHITE);
+                break;
+        }
+
 
         tblConjugation = findViewById(R.id.tblConjugation);
         tvTableTitle = findViewById(R.id.tvTableTitle);
@@ -77,6 +144,9 @@ public class TermDetailActivity extends AppCompatActivity {
         tvPOS.setText(pos);
         tvPron.setText("[" + termSelected.getWord_ceb() + "]");
         tvEng.setText(termSelected.getWord_en());
+
+
+
 
         if(Objects.equals(pos, "verb")) {
             String verb_type = termSelected.getCategory();
@@ -142,6 +212,18 @@ public class TermDetailActivity extends AppCompatActivity {
             }
         });
     }
+
+//    private void applyTheme() {
+//
+//        switch(selectedTheme) {
+//            case "theme1":
+//                tvCeb.setTextColor(Color.WHITE);
+//                tvPOS.setTextColor(Color.WHITE);;
+//                tvPron.setTextColor(Color.WHITE);;
+//                tvEng.setTextColor(Color.WHITE);;
+//                break;
+//        }
+//    }
 
     @SuppressLint("SetTextI18n")
     private void switchToAspect(int aspectCount) {

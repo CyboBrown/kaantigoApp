@@ -20,12 +20,13 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <TextView
+                android:id="@+id/tools"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:text="Tools"
                 android:textAppearance="?attr/textAppearanceHeadline6"
-                android:textSize="@dimen/default_title_bar_font_size"/>
+                android:textSize="@dimen/default_title_bar_font_size" />
 
         </RelativeLayout>
 
@@ -97,12 +98,14 @@
                                 android:orientation="vertical">
 
                                 <TextView
+                                    android:id="@+id/flashcards"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:text="Flashcards"
                                     android:textAppearance="?attr/textAppearanceHeadline6" />
 
                                 <TextView
+                                    android:id="@+id/flashcards_description"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="@dimen/default_spacing_minor"
@@ -167,12 +170,14 @@
                                 android:orientation="vertical">
 
                                 <TextView
+                                    android:id="@+id/sentence_constructor"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:text="Sentence Constructor"
                                     android:textAppearance="?attr/textAppearanceHeadline6" />
 
                                 <TextView
+                                    android:id="@+id/sentence_constructor_description"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="@dimen/default_spacing_minor"

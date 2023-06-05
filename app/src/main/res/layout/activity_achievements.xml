@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:id="@+id/achievementsPage"
     tools:context=".navigation.AchievementsActivity">
     <RelativeLayout
         android:id="@+id/relativeLayout2"
@@ -76,6 +77,7 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:id="@+id/lesson"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Lesson Completion Achievements"
@@ -107,10 +109,11 @@
                                 app:tint="@color/lightGreenDark" />
 
                             <TextView
+                                android:id="@+id/caseMarkers1"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textColor="@color/lightGreenDark"
-                                android:text="Case Markers" />
+                                android:text="Basics 1" />
                         </LinearLayout>
 
                         <LinearLayout
@@ -128,10 +131,11 @@
                                 app:tint="@color/lightGreenDark" />
 
                             <TextView
+                                android:id="@+id/personalPronouns1"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textColor="@color/lightGreenDark"
-                                android:text="Personal Pronouns" />
+                                android:text="Basics 2" />
 
                         </LinearLayout>
                     </LinearLayout>
@@ -151,10 +155,11 @@
                             app:tint="@color/lightGreenDark" />
 
                         <TextView
+                            android:id="@+id/demonstrativePronouns1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textColor="@color/lightGreenDark"
-                            android:text="Demonstrative Pronouns" />
+                            android:text="Basics 3" />
 
                     </LinearLayout>
 
@@ -190,6 +195,7 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:id="@+id/quiz"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Quiz Completion Achievements"
@@ -221,6 +227,7 @@
                                 app:tint="@color/lightGreenDark" />
 
                             <TextView
+                                android:id="@+id/caseMarkers2"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textColor="@color/lightGreenDark"
@@ -242,6 +249,7 @@
                                 app:tint="@color/lightGreenDark" />
 
                             <TextView
+                                android:id="@+id/personalPronouns2"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textColor="@color/lightGreenDark"
@@ -264,6 +272,7 @@
                             app:tint="@color/lightGreenDark" />
 
                         <TextView
+                            android:id="@+id/demonstrativePronouns2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textColor="@color/lightGreenDark"
@@ -300,6 +309,7 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:id="@+id/perfect"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Perfect Score Achievements"
@@ -331,6 +341,7 @@
                                 app:tint="@color/lightGreenDark" />
 
                             <TextView
+                                android:id="@+id/caseMarkers3"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textColor="@color/lightGreenDark"
@@ -353,6 +364,7 @@
                                 app:tint="@color/lightGreenDark" />
 
                             <TextView
+                                android:id="@+id/personalPronouns3"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textColor="@color/lightGreenDark"
@@ -376,6 +388,7 @@
                             app:tint="@color/lightGreenDark" />
 
                         <TextView
+                            android:id="@+id/demonstrativePronouns3"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textColor="@color/lightGreenDark"

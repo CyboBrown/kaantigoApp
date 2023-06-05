@@ -45,14 +45,6 @@ public class FlashcardsActivity extends AppCompatActivity {
         DatabaseAdapter databaseAdapter = new DatabaseAdapter(this);
         flashcards = databaseAdapter.getFlashcards();
 
-//        flashcards = new ArrayList<>();
-//        flashcards.add(new Flashcard("Hello", "Kumusta"));
-//        flashcards.add(new Flashcard("Goodbye", "Ari na ko"));
-//        flashcards.add(new Flashcard("Please", "Palihog"));
-//        flashcards.add(new Flashcard("Thank you", "Salamat"));
-//        flashcards.add(new Flashcard("Yes", "Oo"));
-//        flashcards.add(new Flashcard("No", "Dili"));
-
         FlashcardAdapter flashcardAdapter = new FlashcardAdapter(FlashcardsActivity.this, flashcards);
 
         viewPager.setAdapter(flashcardAdapter);

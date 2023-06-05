@@ -28,7 +28,7 @@
         app:menu="@menu/bottom_navigation_menu" >
 
     </com.google.android.material.bottomnavigation.BottomNavigationView>
-<!--        app:itemIconTint="@drawable/selector"-->
-<!--        app:itemTextColor="@drawable/selector"-->
+    <!--        app:itemIconTint="@drawable/selector"-->
+    <!--        app:itemTextColor="@drawable/selector"-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

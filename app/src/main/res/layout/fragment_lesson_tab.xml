@@ -173,14 +173,14 @@
                                 style="@style/Widget.MaterialComponents.Button.TextButton"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:textAllCaps="false"
+                                android:enabled="false"
                                 android:text="Basics 3 - Non-Focus Cases"
                                 android:textAlignment="textStart"
+                                android:textAllCaps="false"
                                 android:textSize="@dimen/default_lesson_item_font_size"
-                                android:enabled="false"
                                 app:icon="@drawable/ic_circle_uncheck"
-                                app:iconSize="@dimen/default_lesson_icon_size"
-                                app:iconPadding="@dimen/default_spacing_major"/>
+                                app:iconPadding="@dimen/default_spacing_major"
+                                app:iconSize="@dimen/default_lesson_icon_size" />
 
                             <com.google.android.material.divider.MaterialDivider
                                 android:layout_width="match_parent"

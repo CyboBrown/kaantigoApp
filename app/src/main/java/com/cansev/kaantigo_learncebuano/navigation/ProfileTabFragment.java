@@ -35,6 +35,7 @@ import com.google.android.material.card.MaterialCardView;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
+import java.util.Objects;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -105,8 +106,6 @@ public class ProfileTabFragment extends Fragment {
 
         // Retrieve the saved username from SharedPreferences
         savedUsername = prefs.getString("username", "Default Username");
-
-
     }
 
     @Override
@@ -231,7 +230,7 @@ public class ProfileTabFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 // Save the progress using SharedPreferences
-                SharedPreferences.Editor editor = getContext().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE).edit();
+                SharedPreferences.Editor editor = requireContext().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE).edit();
 
                 // Reset Lesson Completion AchievementsActivity:
                 editor.putBoolean("isLessonCaseMarkersCompleted", false);
@@ -322,7 +321,6 @@ public class ProfileTabFragment extends Fragment {
                 profile_card.setCardBackgroundColor(ContextCompat.getColor(getContext(), R.color.lightBlack));
                 divider.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.lightBlack));
                 edit.setTextColor(Color.WHITE);
-                profile_back.setColorFilter(Color.WHITE);
                 break;
             case "theme3":
                 view.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.lightGreenDark));
@@ -337,7 +335,6 @@ public class ProfileTabFragment extends Fragment {
                 profile_card.setCardBackgroundColor(ContextCompat.getColor(getContext(), R.color.lightGreenLight));
                 divider.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.lightGreenLight));
                 edit.setTextColor(Color.WHITE);
-                profile_back.setColorFilter(Color.WHITE);
                 break;
             case "theme4":
                 view.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.lightBlueDark));
@@ -352,8 +349,38 @@ public class ProfileTabFragment extends Fragment {
                 profile_card.setCardBackgroundColor(ContextCompat.getColor(getContext(), R.color.lightBlueLight));
                 divider.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.lightBlueLight));
                 edit.setTextColor(Color.WHITE);
-                profile_back.setColorFilter(Color.WHITE);
                 break;
         }
+//            case "theme3":
+//                view.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.lightGreenDark));
+//                profile.setTextColor(Color.WHITE);
+//                name.setTextColor(Color.WHITE);
+//                preferences.setTextColor(Color.WHITE);
+//                themes.setTextColor(Color.WHITE);
+//                viewAchievements.setTextColor(Color.WHITE);
+//                notifications.setTextColor(Color.WHITE);
+//                language.setTextColor(Color.WHITE);
+//                resetProgress.setTextColor(Color.WHITE);
+//                profile_card.setCardBackgroundColor(ContextCompat.getColor(getContext(), R.color.lightGreenLight));
+//                divider.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.lightGreenLight));
+//                edit.setTextColor(Color.WHITE);
+//                profile_back.setColorFilter(Color.WHITE);
+//                break;
+//            case "theme4":
+//                view.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.lightBlueDark));
+//                profile.setTextColor(Color.WHITE);
+//                name.setTextColor(Color.WHITE);
+//                preferences.setTextColor(Color.WHITE);
+//                themes.setTextColor(Color.WHITE);
+//                viewAchievements.setTextColor(Color.WHITE);
+//                notifications.setTextColor(Color.WHITE);
+//                language.setTextColor(Color.WHITE);
+//                resetProgress.setTextColor(Color.WHITE);
+//                profile_card.setCardBackgroundColor(ContextCompat.getColor(getContext(), R.color.lightBlueLight));
+//                divider.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.lightBlueLight));
+//                edit.setTextColor(Color.WHITE);
+//                profile_back.setColorFilter(Color.WHITE);
+//                break;
+//        }
     }
 }
