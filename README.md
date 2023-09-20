@@ -22,3 +22,5 @@
 ![DarkModeLogo-removebg](https://user-images.githubusercontent.com/93238695/230348214-15a6bdbc-8b7e-4ea3-878d-a83553a10c1b.png)
 - LightMode Logo </br>
 ![LightModeLogo-removebg](https://user-images.githubusercontent.com/93238695/230348307-126076a0-98ef-49cd-adb8-3d0ff59ef287.png)
+
+Developed by Christian Roy Seville ([CyboBrown](https://github.com/CyboBrown)) and Kyle Canonigo ([kylecanonigo](https://github.com/kylecanonigo))
