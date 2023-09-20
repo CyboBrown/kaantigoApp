@@ -25,22 +25,26 @@ public class DatabaseAdapter {
         helper.close();
     }
 
-    public ArrayList<Term> getSearchResults(String searchInput, boolean isEnglish, boolean isSQL, boolean isPhonetic) {
+    public ArrayList<Term> getSearchResults(String searchInput, boolean isEnglish, boolean isSQL, boolean isPhonetic, boolean isRegEx) {
         termList.clear();
         Cursor cursor = null;
         String searchColumn = DatabaseHelper.KEY_WRITTEN_FORM;
         String searchCommand = searchInput + "%";
+        String searchKeyword = "LIKE";
         if(isEnglish) {
             searchColumn = DatabaseHelper.KEY_WORD_EN;
         } else if(isPhonetic) {
             searchColumn = DatabaseHelper.KEY_WORD_CEB;
         }
-        if(isSQL) {
+        if(isSQL || isRegEx) {
             searchCommand = searchInput;
+        }
+        if(isRegEx) {
+            searchKeyword = "REGEXP";
         }
         try {
             cursor = db.rawQuery("SELECT * FROM (SELECT word_ceb, written_form, affixed_form, word_en, pos, category FROM ceb_adjectives UNION SELECT word_ceb, written_form, affixed_form, word_en, pos, category FROM ceb_nouns UNION SELECT word_ceb, written_form, affixed_form, word_en, pos, category FROM ceb_verbs UNION SELECT word_ceb, written_form, affixed_form, word_en, pos, category FROM ceb_special) merged_table" +
-                    " WHERE " + searchColumn + " LIKE '" + searchCommand + "' ORDER BY " + searchColumn + " LIMIT 100", new String[]{});
+                    " WHERE " + searchColumn + " " + searchKeyword + " '" + searchCommand + "' ORDER BY " + searchColumn + " LIMIT 100", new String[]{});
             while(cursor.moveToNext()) {
                 int index1 = cursor.getColumnIndex(DatabaseHelper.KEY_WORD_CEB);
                 String word_ceb = cursor.getString(index1);

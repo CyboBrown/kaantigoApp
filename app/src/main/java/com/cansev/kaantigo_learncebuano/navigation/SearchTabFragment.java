@@ -39,7 +39,7 @@ public class SearchTabFragment extends Fragment {
     SearchResultAdapter adapter;
     ArrayList<Term> data;
     DatabaseAdapter databaseAdapter;
-    SwitchMaterial swEnglish, swSQL, swPhonetic;
+    SwitchMaterial swEnglish, swSQL, swPhonetic, swRegEx;
 
     private String selectedTheme;
 
@@ -78,6 +78,7 @@ public class SearchTabFragment extends Fragment {
         swEnglish = view.findViewById(R.id.switchEnglish);
         swSQL = view.findViewById(R.id.switchSQL);
         swPhonetic = view.findViewById(R.id.switchPhonetic);
+        swRegEx = view.findViewById(R.id.switchRegEx);
         rvSearchResults = view.findViewById(R.id.rvSearchResults);
         rvSearchResults.setHasFixedSize(true);
         rvSearchResults.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -87,7 +88,7 @@ public class SearchTabFragment extends Fragment {
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-                data = databaseAdapter.getSearchResults(query, swEnglish.isChecked(), swSQL.isChecked(), swPhonetic.isChecked());
+                data = databaseAdapter.getSearchResults(query, swEnglish.isChecked(), swSQL.isChecked(), swPhonetic.isChecked(), swRegEx.isChecked());
                 adapter.setData(data);
                 adapter.notifyDataSetChanged();
                 return true;
@@ -98,7 +99,7 @@ public class SearchTabFragment extends Fragment {
                 if (newText.isEmpty()) {
                     data.clear();
                 } else {
-                    data = databaseAdapter.getSearchResults(newText, swEnglish.isChecked(), swSQL.isChecked(), swPhonetic.isChecked());
+                    data = databaseAdapter.getSearchResults(newText, swEnglish.isChecked(), swSQL.isChecked(), swPhonetic.isChecked(), swRegEx.isChecked());
                     adapter.setData(data);
                 }
                 adapter.notifyDataSetChanged();
